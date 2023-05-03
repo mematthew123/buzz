@@ -1,0 +1,60 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display&family=League+Spartan:wght@500;600;700&family=Montserrat+Subrayada:wght@700&family=Source+Sans+Pro:wght@200;300&display=swap');
+
+@keyframes flicker {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+  
+  .neonText {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #89fc00;
+    text-shadow: 0 0 5px #89fc00, 0 0 10px #89fc00, 0 0 20px #89fc00, 0 0 40px #89fc00, 0 0 80px #89fc00;
+    animation: flicker 1.5s infinite alternate;
+    top: 0;
+  }
+  
+
+  .neonShape {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: transparent;
+    border: 2px solid #08f;
+    box-shadow: 0 0 5px #08f, 0 0 10px #08f, 0 0 20px #08f, 0 0 40px #08f, 0 0 80px #08f;
+    animation: flicker 1.5s infinite alternate;
+  }
+  
+
+  @keyframes flicker {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+  
+  .neonWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .neonChar {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3rem;
+    color: #89fc00;
+    text-shadow: 0 0 5px #89fc00, 0 0 10px #89fc00, 0 0 20px #89fc00, 0 0 40px #89fc00, 0 0 80px #89fc00;
+  }
+  
+  .neonChar.flicker {
+    animation: flicker 2.5s infinite alternate;
+  }
+  
+  
