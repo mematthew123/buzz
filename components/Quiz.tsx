@@ -1,5 +1,7 @@
 // components/Quiz.tsx
 import React, { useState } from "react";
+import { strainData } from "../data/strainData";
+import { Strain } from "@/interfaces/strains.interfaces";
 
 const questions = [
   {
@@ -43,8 +45,30 @@ const Quiz: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Process the answers and determine the best product
+  
+    const bestProduct = getBestProduct(answers);
+    alert(`The best product for you is: ${bestProduct.name}`);
   };
+  
+
+  const getBestProduct = (answers: string[]): Strain => {
+    const experienceAnswer = answers[2];
+  
+    let bestProduct = strainData[0]; // Default to the first strain
+  
+    // Modify this algorithm to better suit your needs
+    if (experienceAnswer === "I'm a total newbie") {
+      bestProduct = strainData.find((strain) => strain.thc <= 20) || bestProduct;
+    } else if (experienceAnswer === "I've tried it a few times") {
+      bestProduct = strainData.find((strain) => strain.thc > 20 && strain.thc <= 25) || bestProduct;
+    } else if (experienceAnswer === "I'm a regular user" || experienceAnswer === "I'm a seasoned veteran") {
+      bestProduct = strainData.find((strain) => strain.thc > 25) || bestProduct;
+    }
+  
+    return bestProduct;
+  };
+  
+  
 
   const handleOptionChange = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -92,31 +116,24 @@ const Quiz: React.FC = () => {
           ))}
         </div>
         <div className="flex justify-between">
+        {currentQuestionIndex < questions.length - 1 ? (
           <button
             type="button"
-            onClick={goToPreviousQuestion}
-            disabled={currentQuestionIndex === 0}
+            onClick={goToNextQuestion}
             className="bg-gray-300 text-gray-700 px-4 py-2 rounded"
           >
-            Previous
+            Next
           </button>
-          {currentQuestionIndex < questions.length - 1 ? (
-            <button
-              type="button"
-              onClick={goToNextQuestion}
-              className="bg-gray-300 text-gray-700 px-4 py-2 rounded"
-            >
-              Next
-            </button>
-          ) : (
-            <button
-              type="submit"
-              className="bg-gray-300 text-gray-700 px-4 py-2 rounded"
-            >
-              Submit
-            </button>
-          )}
-        </div>
+        ) : (
+          <button
+            type="submit"
+            disabled={answers.length !== questions.length}
+            className="bg-gray-300 text-gray-700 px-4 py-2 rounded"
+          >
+            Submit
+          </button>
+        )}
+      </div>
       </form>
     </div>
   );

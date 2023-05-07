@@ -24,7 +24,7 @@ const QuizModal: React.FC = () => {
       </button>
       {isModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center z-50">
-          <div className="bg-white w-[200px] h-full">
+          <div className="bg-white w-[2000px] h-full">
             <button
               onClick={closeModal}
               className="absolute top-4 right-4 text-gray-600 hover:text-gray-700"
