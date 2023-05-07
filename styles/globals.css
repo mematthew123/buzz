@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,100;9..144,200;9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,800;9..144,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&display=swap");
+
+h2 {
+  font-family: Fraunces 9pt;
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 48px;
+  letter-spacing: 0px;
+  text-align: center;
+}
+
+/* p {
+  font-family: "Barlow", sans-serif;
+  font-weight: 400;
+  overflow-wrap: break-word;
+  line-height: 1.5;
+  color: black;
+} */
+
+
+
+/* .nav-menu {
+  font-family: "Barlow", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: black;
+} */

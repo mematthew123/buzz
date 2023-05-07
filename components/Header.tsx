@@ -4,7 +4,7 @@ import styles from "./Header.module.css";
 const Header = () => {
   const text = "Buzz Genetics";
 
-  const shouldFlicker = (char:string) => {
+  const shouldFlicker = (char: string) => {
     // Add any character(s) you want to flicker, for example 'g', 't'
     return ["z"].includes(char.toLowerCase());
   };
