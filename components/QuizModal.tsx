@@ -1,6 +1,6 @@
 // components/QuizModal.tsx
 import React, { useState } from "react";
-import Quiz from "./quiz";
+import Quiz from "./Quiz";
 
 const QuizModal: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

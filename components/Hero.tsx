@@ -7,9 +7,9 @@ function Hero() {
     <div>
       <div className="h-[100vh] w-full relative">
         <div className="text-white absolute inset-0 flex flex-col justify-center items-center text-center small:text-left small:justify-end small:items-start small:p-32">
-          <h1 className="text-2xl-semi mb-4 ">
+          <h2 className="text-4xl mb-4 ">
             Summer styles are finally here
-          </h1>
+          </h2>
 
           <img
             src="/weedMag.jpg"

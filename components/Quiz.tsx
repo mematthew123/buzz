@@ -1,7 +1,7 @@
-// components/Quiz.tsx
 import React, { useState } from "react";
 import { strainData } from "../data/strainData";
 import { Strain } from "@/interfaces/strains.interfaces";
+import { Product, productData } from "../data/productData";
 
 const questions = [
   {
@@ -42,33 +42,40 @@ const questions = [
 const Quiz: React.FC = () => {
   const [answers, setAnswers] = useState<Array<string>>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [result, setResult] = useState<Product | null>(null); // Add this line
 
+  // show the results of the quiz
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-  
-    const bestProduct = getBestProduct(answers);
-    alert(`The best product for you is: ${bestProduct.name}`);
-  };
-  
 
-  const getBestProduct = (answers: string[]): Strain => {
+    const bestProduct = getBestProduct(answers);
+    setResult(bestProduct); // Update this line
+  };
+
+  const getBestProduct = (answers: string[]): Product => {
     const experienceAnswer = answers[2];
-  
-    let bestProduct = strainData[0]; // Default to the first strain
-  
-    // Modify this algorithm to better suit your needs
+
+    let bestProduct = productData[0]; // Default to the first product
+
+    // Update the algo to get the best product for the user based on their preferences
+    // For example, you can use the product type or any other property you find relevant
     if (experienceAnswer === "I'm a total newbie") {
-      bestProduct = strainData.find((strain) => strain.thc <= 20) || bestProduct;
+      bestProduct =
+        productData.find((product) => product.thc <= 20) || bestProduct;
     } else if (experienceAnswer === "I've tried it a few times") {
-      bestProduct = strainData.find((strain) => strain.thc > 20 && strain.thc <= 25) || bestProduct;
-    } else if (experienceAnswer === "I'm a regular user" || experienceAnswer === "I'm a seasoned veteran") {
-      bestProduct = strainData.find((strain) => strain.thc > 25) || bestProduct;
+      bestProduct =
+        productData.find((product) => product.thc > 20 && product.thc <= 25) ||
+        bestProduct;
+    } else if (
+      experienceAnswer === "I'm a regular user" ||
+      experienceAnswer === "I'm a seasoned veteran"
+    ) {
+      bestProduct =
+        productData.find((product) => product.thc > 25) || bestProduct;
     }
-  
+
     return bestProduct;
   };
-  
-  
 
   const handleOptionChange = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -93,8 +100,31 @@ const Quiz: React.FC = () => {
 
   const currentQuestion = questions[currentQuestionIndex];
 
+  if (result) {
+    return (
+      <div className="bg-white text-gray-700 p-8 rounded-lg w-[sm:420px] lg:w-[580px]  mx-auto shadow-lg">
+        <h1 className="text-2xl mb-6">Your Best Product</h1>
+        <h2 className="text-xl mb-4">Name: {result.name}</h2>
+        <img
+          src={result.image}
+          alt={result.name}
+          className="w-full h-48 object-cover object-center rounded-t-lg"
+        />
+        <p>Type: {result.type}</p>
+        <p>THC: {result.thc}%</p>
+        <p>CBD: {result.cbd}%</p>
+        <button
+          className="bg-blue-300 text-gray-700 px-4 py-2 rounded mt-4"
+          onClick={() => (window.location.href = "/menu")}
+        >
+          View All Products
+        </button>
+      </div>
+    );
+  }
+
   return (
-<div className="bg-white text-gray-700 p-8 rounded-lg w-[sm:420px] lg:w-[580px]  mx-auto shadow-lg">
+    <div className="bg-white text-gray-700 p-8 rounded-lg w-[sm:420px] lg:w-[580px]  mx-auto shadow-lg">
       <h1 className="text-2xl mb-6">Quiz: Find the Best Product for You</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-6">
@@ -116,24 +146,24 @@ const Quiz: React.FC = () => {
           ))}
         </div>
         <div className="flex justify-between">
-        {currentQuestionIndex < questions.length - 1 ? (
-          <button
-            type="button"
-            onClick={goToNextQuestion}
-            className="bg-gray-300 text-gray-700 px-4 py-2 rounded"
-          >
-            Next
-          </button>
-        ) : (
-          <button
-            type="submit"
-            disabled={answers.length !== questions.length}
-            className="bg-gray-300 text-gray-700 px-4 py-2 rounded"
-          >
-            Submit
-          </button>
-        )}
-      </div>
+          {currentQuestionIndex < questions.length - 1 ? (
+            <button
+              type="button"
+              onClick={goToNextQuestion}
+              className="bg-gray-300 text-gray-700 px-4 py-2 rounded"
+            >
+              Next
+            </button>
+          ) : (
+            <button
+              type="submit"
+              disabled={answers.length !== questions.length}
+              className="bg-gray-300 text-gray-700 px-4 py-2 rounded"
+            >
+              Submit
+            </button>
+          )}
+        </div>
       </form>
     </div>
   );
