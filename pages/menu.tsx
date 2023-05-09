@@ -1,7 +1,36 @@
 import React, { useState } from "react";
-import { Product, productData } from "../data/productData";
+import { GetStaticProps } from "next";
+import {client} from '../sanity/lib/client'
+import { InferGetStaticPropsType } from "next";
+import { productData, Product } from "@/data/productData";
 
-const Menu: React.FC = () => {
+export const getStaticProps: GetStaticProps = async () => {
+  const products = await client.fetch(`
+    *[_type == "product"]{
+      _id,
+      title,
+      description,
+      type,
+      productType,
+      thc,
+      cbd,
+      price,
+      size,
+      "imageUrl": images[0].asset->url,
+    }
+  `);
+
+  return {
+    props: {
+      products,
+    },
+    revalidate: 60,
+  };
+};
+
+const Menu: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
+  products,
+}) => {
   const [selectedFilter, setSelectedFilter] = useState("All");
   const [selectedProductType, setSelectedProductType] = useState("All");
 
@@ -45,47 +74,47 @@ const Menu: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {productData
-          .filter(
-            (product) =>
-              (selectedFilter === "All"
-                ? true
-                : product.type === selectedFilter) &&
-              (selectedProductType === "All"
-                ? true
-                : product.productType === selectedProductType)
-          )
-          .map((product: Product) => (
-            <div
-              key={product.id}
-              className="border border-gray-300 p-4 rounded-lg"
-            >
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-full h-64 object-cover object-center mb-4"
-              />
-              <h2 className="text-xl font-semibold mb-2">{product.name}</h2>
-              <p className="text-gray-600 mb-4">{product.description}</p>
-              <p className="text-gray-600">
-                <strong>Type:</strong> {product.type}
-              </p>
-              <p className="text-gray-600">
-                <strong>THC:</strong> {product.thc}%
-              </p>
-              <p className="text-gray-600">
-                <strong>CBD:</strong> {product.cbd}%
-              </p>
-              <p className="text-gray-600">
-                <strong>Price:</strong> ${product.price}
-              </p>
-              <p className="text-gray-600">
-                <strong>Size:</strong> {product.size}
-              </p>
-            </div>
-          ))}
+  {products
+    .filter(
+      (product: { type: string; productType: string; }) =>
+        (selectedFilter === "All"
+          ? true
+          : product.type === selectedFilter) &&
+        (selectedProductType === "All"
+          ? true
+          : product.productType === selectedProductType)
+    )
+    .map((product: Product) => (
+      <div
+        key={product.id}
+        className="border border-gray-300 p-4 rounded-lg"
+      >
+        <img
+          src={product.image}
+          alt={product.name}
+          className="w-full h-64 object-cover object-center mb-4"
+        />
+        <h2 className="text-xl font-semibold mb-2">{product.name}</h2>
+        <p className="text-gray-600 mb-4">{product.description}</p>
+        <p className="text-gray-600">
+          <strong>Type:</strong> {product.type}
+        </p>
+        <p className="text-gray-600">
+          <strong>THC:</strong> {product.thc}%
+        </p>
+        <p className="text-gray-600">
+          <strong>CBD:</strong> {product.cbd}%
+        </p>
+        <p className="text-gray-600">
+          <strong>Price:</strong> ${product.price}
+        </p>
+        <p className="text-gray-600">
+          <strong>Size:</strong> {product.size}
+        </p>
       </div>
-    </div>
+    ))}
+</div>
+</div>
   );
 };
 
