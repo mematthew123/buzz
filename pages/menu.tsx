@@ -2,7 +2,20 @@ import React, { useState } from "react";
 import { GetStaticProps } from "next";
 import {client} from '../sanity/lib/client'
 import { InferGetStaticPropsType } from "next";
-import { productData, Product } from "@/data/productData";
+
+
+interface Product {
+  _id: string;
+  title: string;
+  description: string;
+  type: string;
+  productType: string;
+  thc: string;
+  cbd: string;
+  price: string;
+  size: string;
+  imageUrl: string;
+}
 
 export const getStaticProps: GetStaticProps = async () => {
   const products = await client.fetch(`
@@ -86,15 +99,16 @@ const Menu: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
     )
     .map((product: Product) => (
       <div
-        key={product.id}
+        key={product._id}
         className="border border-gray-300 p-4 rounded-lg"
       >
         <img
-          src={product.image}
-          alt={product.name}
+        
+          src={product.imageUrl}
+          alt={product.title}
           className="w-full h-64 object-cover object-center mb-4"
         />
-        <h2 className="text-xl font-semibold mb-2">{product.name}</h2>
+        <h2 className="text-xl font-semibold mb-2">{product.title}</h2>
         <p className="text-gray-600 mb-4">{product.description}</p>
         <p className="text-gray-600">
           <strong>Type:</strong> {product.type}
