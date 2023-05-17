@@ -85,7 +85,7 @@ export interface Product {
       description: "Chocolate bar perfect for relaxation.",
       price: 15,
       size: "50mg bar",
-        productType: "Edible",
+      productType: "Edible",
     },
     // Add more products as needed
   ];
