@@ -7,7 +7,8 @@ import author from './schemas/author'
 import product from './schemas/product'
 import collections from './schemas/collections'
 import vendor from './schemas/vendor'
+import hero from './schemas/hero'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [post, author, category, blockContent, product,collections,vendor]
+  types: [post, author, category, blockContent, product,collections,vendor,hero]
 }

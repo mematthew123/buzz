@@ -71,6 +71,18 @@ export default defineType({
         },
       ],
     }),
+    defineField({
+      name: "vendor",
+      title: "Vendor",
+      type: "reference",
+      to: [{ type: "vendor" }], 
+    }),
+    defineField({
+      name: "collections",
+      title: "Collections",
+      type: "array",
+      of: [{ type: "reference", to: [{ type: "collections" }] }], 
+    }),
   ],
 
   preview: {
