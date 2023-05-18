@@ -4,6 +4,7 @@ import { client } from "../sanity/lib/client";
 import { InferGetStaticPropsType } from "next";
 import { Product } from "@/interfaces/products.interfaces";
 import Link from "next/link";
+import Image from "next/image";
 
 
 
@@ -92,9 +93,11 @@ const Menu: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
               key={product._id}
               className="border border-gray-300 p-4 rounded-lg"
             >
-              <img
+              <Image
                 src={product.imageUrl}
                 alt={product.title}
+                width={500}
+                height={500}
                 className="w-full h-64 object-cover object-center mb-4"
               />
               <Link href={`/products/${product._id}`}>
