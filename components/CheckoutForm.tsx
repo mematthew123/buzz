@@ -4,73 +4,64 @@ const CheckoutForm: React.FC = () => {
   return (
     <form className="w-full max-w-lg">
       <div className="flex flex-wrap -mx-3 mb-6">
-        <div className="w-full px-3 mb-6 md:mb-0">
+        <div className="relative w-full px-3 mb-6 md:mb-0">
           <label
-            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-            htmlFor="grid-first-name"
+            htmlFor="name"
+            className="absolute -top-2 left-2 inline-block px-1 text-xs font-medium text-gray-900"
           >
-            First Name
+            Name
           </label>
           <input
-            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-            id="grid-first-name"
             type="text"
-            placeholder="Jane"
+            name="name"
+            id="name"
+            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            placeholder="Jane Smith"
           />
-          <p className="text-red-500 text-xs italic">
-            Please fill out this field.
-          </p>
+          <div className="relative mt-5">
+            <label
+              htmlFor="grid-date-of-birth"
+              className="absolute -top-2 left-2 inline-block px-1 text-xs font-medium text-gray-900"
+            >
+              Date of Birth
+            </label>
+            <input
+              id="grid-date-of-birth"
+              type="date"
+              className="block w-full rounded-md border-0 py-1.5 text-gray-400 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              placeholder="Doe"
+            />
+          </div>
 
-          <label
-            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-            htmlFor="grid-last-name"
-          >
-            Last Name
-          </label>
-          <input
-            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-            id="grid-last-name"
-            type="text"
-            placeholder="Doe"
-          />
+          <div className="relative mt-5">
+            <label
+              htmlFor="grid-email"
+              className="absolute -top-2 left-2 inline-block px-1 text-xs font-medium text-gray-900"
+            >
+              Email
+            </label>
+            <input
+              id="grid-email"
+              type="email"
+              className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              placeholder="example@gmail.com"
+            />
+          </div>
 
-          <label
-            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-            htmlFor="grid-date-of-birth"
-          >
-            Date of Birth
-          </label>
-          <input
-            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-            id="grid-date-of-birth"
-            type="date"
-            placeholder="Doe"
-          />
-
-          <label
-            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-            htmlFor="grid-email"
-          >
-            Email
-          </label>
-          <input
-            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-            id="grid-email"
-            type="email"
-            placeholder="example@gmail.com"
-          />
-          <label
-            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-            htmlFor="grid-phone"
-          >
-            Phone
-          </label>
-          <input
-            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-            id="grid-phone"
-            type="tel"
-            placeholder="123-456-7890"
-          />
+          <div className="relative mt-5">
+            <label
+              htmlFor="grid-phone"
+              className="absolute -top-2 left-2 inline-block px-1 text-xs font-medium text-gray-900"
+            >
+              Phone
+            </label>
+            <input
+              id="grid-phone"
+              type="tel"
+              className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              placeholder="123-456-7890"
+            />
+          </div>
         </div>
 
         <button
