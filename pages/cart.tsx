@@ -1,7 +1,7 @@
 import Cart from "@/components/Cart";
 import React from "react";
 
-const test = () => {
+const cartPage = () => {
   return (
     <div>
       <Cart />
@@ -9,4 +9,4 @@ const test = () => {
   );
 };
 
-export default test;
+export default cartPage
