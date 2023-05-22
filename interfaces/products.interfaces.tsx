@@ -1,5 +1,4 @@
 export interface Product {
-  imageUrl: any;
   _id: string;
   title: string;
   description: string;
@@ -9,5 +8,8 @@ export interface Product {
   cbd: string;
   price: any;
   size: string;
-  imageUrls: string[]; // Array of image URLs
+  imageUrls: any[]; // Array of image URLs
+  imageUrl?: string;
+  images?: Array<{ asset: { _ref: string } }>;
+
 }

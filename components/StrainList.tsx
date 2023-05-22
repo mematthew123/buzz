@@ -1,4 +1,3 @@
-// components/StrainList.tsx
 import React from "react";
 import { strainData } from "../data/strainData";
 import StrainCard from "./StrainCard";

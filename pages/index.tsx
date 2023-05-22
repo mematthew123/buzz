@@ -6,10 +6,42 @@ import FeatureSection from "@/components/FeatureSection";
 import CTA from "@/components/CTA";
 import CTARight from "@/components/CTARight";
 import WhyUs from "@/components/WhyUs";
+import FeaturedProduct from "@/components/FeaturedProduct";
+import { client } from "@/sanity/lib/client";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
+import { Product } from "@/interfaces/products.interfaces";
+import product from "@/sanity/schemas/product";
+import { getFeaturedProduct } from "@/sanity/queries/getProducts";  // import the featured product query
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export const getStaticProps: GetStaticProps = async () => {
+  const [heroData, featuredProduct] = await Promise.all([
+    client.fetch(`
+      *[_type == "hero"][0]{
+        title,
+        description,
+        "heroImage": heroImage.asset->url,
+        "alt": heroImage.alt
+      }
+    `),
+    client.fetch(getFeaturedProduct),
+  ]);
+
+  return {
+    props: {
+      heroData,
+      featuredProduct,
+    },
+    revalidate: 60, // ISR, re-generate the site every 60 seconds if there's a request
+  };
+};
+
+
+const Home: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
+  heroData,
+  featuredProduct,  // add the featured product prop here
+}) => {
   return (
     <>
       <div>
@@ -65,8 +97,10 @@ export default function Home() {
         </div>
         <CTA />
         <WhyUs />
-        <CTARight />
+        <FeaturedProduct product={featuredProduct} />  {/* Render the FeaturedProduct component */}
       </div>
     </>
   );
 }
+
+export default Home;

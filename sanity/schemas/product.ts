@@ -20,6 +20,12 @@ export default defineType({
       },
     }),
     defineField({
+      name: "featured",
+      title: "Featured Product",
+      type: "boolean",
+      description: "Mark this checkbox if the product is a featured product"
+    }),
+    defineField({
       name: "description",
       title: "Description",
       type: "text",
