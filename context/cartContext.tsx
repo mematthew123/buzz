@@ -1,4 +1,3 @@
-// cartContext.tsx
 import React, { createContext, useState, ReactNode } from "react";
 import { Product } from "@/interfaces/products.interfaces";
 

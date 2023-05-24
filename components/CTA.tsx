@@ -1,9 +1,10 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import QuizModal from "./QuizModal";
 
 const CTA = () => {
   return (
-    <div className=" border-4 border-lime-500 flex flex-col sm:flex-row items-center justify-between py-10 mb-4">
+    <div className=" border-4 border-lime-500 flex flex-col sm:flex-row items-center py-10 lg:w-[1100px] mb-4">
       <div className=" px-4 text-center mb-4 sm:mb-0">
         <h2 className="text-3xl font-bold mb-4">Your Call to Action</h2>
         <p className="text-lg text-center max-w-md mx-auto">
@@ -11,9 +12,6 @@ const CTA = () => {
           users to take action.
         </p>
         <div className="text-center">
-          {/* <button className="bg-blue-600 text-white px-4 py-2 rounded mt-4">
-            Take Action
-          </button> */}
           <QuizModal />
         </div>
       </div>
