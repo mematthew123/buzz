@@ -21,6 +21,8 @@ const CTA = () => {
           alt="A description of the image"
           className="w-full h-auto rounded-md"
           loading="lazy"
+          width={500}
+          height={500}
         />
       </div>
     </div>

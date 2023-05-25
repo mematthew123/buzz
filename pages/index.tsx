@@ -1,16 +1,13 @@
 import { Inter } from "next/font/google";
-import Navbar from "@/components/Navbar";
 import Link from "next/link";
 import { ArrowRightIcon } from "@heroicons/react/outline";
 import FeatureSection from "@/components/FeatureSection";
 import CTA from "@/components/CTA";
-import CTARight from "@/components/CTARight";
 import WhyUs from "@/components/WhyUs";
 import FeaturedProduct from "@/components/FeaturedProduct";
 import { client } from "@/sanity/lib/client";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
-import { Product } from "@/interfaces/products.interfaces";
-import product from "@/sanity/schemas/product";
+import Image from "next/image";
 import { getFeaturedProduct } from "@/sanity/queries/getProducts";  // import the featured product query
 
 const inter = Inter({ subsets: ["latin"] });
@@ -47,12 +44,16 @@ const Home: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
       <div>
         <div className="h-[95vh] w-full relative">
           <div className="text-white absolute inset-0 flex flex-col justify-center items-center text-center small:text-left small:justify-end small:items-start small:p-32">
-            <img
+            <Image
               src="/weedMag.jpg"
               loading="eager"
               alt="Photo by @thevoncomplex https://unsplash.com/@thevoncomplex"
               className="absolute inset-0 object-cover h-[95vh] w-full z-0"
               draggable="false"
+              width={1200}
+              height={800}
+
+
             />
             <div className=" bg-gray-600 bg-blend-overlay bg-opacity-50 absolute inset-0"></div>
 
