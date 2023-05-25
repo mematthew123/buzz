@@ -6,9 +6,9 @@ const client = twilio(accountSid, authToken);
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') {
-    const { body } = req.body;
+    const {to, body } = req.body;
     client.messages
-      .create({ body, from: '+18775897551', to:'+14064027769' })
+      .create({ body, from: '+18775897551', to })
       .then((message: any) => {
         res.status(200).json({ sid: message.sid });
       })
