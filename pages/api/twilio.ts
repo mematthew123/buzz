@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import { NextApiRequest, NextApiResponse } from 'next';
 const twilio = require('twilio');
 const accountSid = process.env.TWILIO_ACCOUNT_SID;

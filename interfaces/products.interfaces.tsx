@@ -8,8 +8,8 @@ export interface Product {
   cbd: string;
   price: any;
   size: string;
-  imageUrls: any[]; // Array of image URLs
-  imageUrl?: string;
+  imageUrls?: any[]; // Array of image URLs
+  imageUrl?: string | undefined; // Single image URL
   images?: Array<{ asset: { _ref: string } }>;
 
 }

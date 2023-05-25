@@ -94,7 +94,7 @@ const Menu: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
               className="border border-gray-300 p-4 rounded-lg"
             >
               <Image
-                src={product.imageUrl}
+                src={product.imageUrl || "/images/placeholder.png"}
                 alt={product.title}
                 width={500}
                 height={500}
