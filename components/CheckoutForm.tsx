@@ -1,5 +1,30 @@
+import { useState } from "react";
+
 const CheckoutForm: React.FC = () => {
-  // ... Checkout form functionality
+  const [name, setName] = useState("");
+  const [dateOfBirth, setDateOfBirth] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+
+  const handleOrderConfirmation = async () => {
+    console.log("Confirm order");
+
+    const response = await fetch("/api/twilio", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        to: phone,
+        body: `Thank you for your order, ${name}!`,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to send SMS");
+    }
+
+    const data = await response.json();
+    console.log(data);
+  };
 
   return (
     <form className="w-full max-w-lg">
@@ -65,7 +90,7 @@ const CheckoutForm: React.FC = () => {
         </div>
 
         <button
-          onClick={() => console.log("Confirm order")}
+          onClick={handleOrderConfirmation}
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           type="button"
         >
