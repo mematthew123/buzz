@@ -8,7 +8,8 @@ import FeaturedProduct from "@/components/FeaturedProduct";
 import { client } from "@/sanity/lib/client";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Image from "next/image";
-import { getFeaturedProduct } from "@/sanity/queries/getProducts";  // import the featured product query
+import { getFeaturedProduct } from "@/sanity/queries/getProducts";  
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -45,7 +46,7 @@ const Home: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
         <div className="h-[95vh] w-full relative">
           <div className="text-white absolute inset-0 flex flex-col justify-center items-center text-center small:text-left small:justify-end small:items-start small:p-32">
             <Image
-              src="/weedMag.jpg"
+              src="/magazine.jpg"
               loading="eager"
               alt="Photo by @thevoncomplex https://unsplash.com/@thevoncomplex"
               className="absolute inset-0 object-cover h-[95vh] w-full z-0"
