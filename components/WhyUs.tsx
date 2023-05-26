@@ -27,7 +27,7 @@ const WhyUs = () => {
   return (
     <div className=" outline-2 outline-lime-800 border-4 border-lime-500 mx-auto container lg:h-auto sm:h-[1200px] ">
       <div className="mx-auto text-center rounded-lg">
-\          <h2 className="font-bold pt-20  text-gray-800 text-[40px] leading-[48px] text-center">
+         <h2 className="font-bold pt-20  text-gray-800 text-[40px] leading-[48px] text-center">
             Why choose us?
           </h2>
           <p className="pt-10 lg:pt-20 line-clamp-3 text-gray-800 text-[20px] leading-[28px] text-center">
