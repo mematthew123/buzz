@@ -1,4 +1,4 @@
-import React, { createContext, useState, ReactNode } from "react";
+import React, { createContext, useState, useEffect, ReactNode } from "react";
 import { Product } from "@/interfaces/products.interfaces";
 
 export interface CartItem {
@@ -20,9 +20,26 @@ interface CartProviderProps {
 }
 
 export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
   const [cart, setCart] = useState<CartItem[]>([]);
 
-  console.log(cart); // Log the state of the cart
+  useEffect(() => {
+    if (hasMounted) {
+      const localData = localStorage.getItem("cart");
+      if (localData) setCart(JSON.parse(localData));
+    }
+  }, [hasMounted]);
+
+  useEffect(() => {
+    if (hasMounted) {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+  }, [cart, hasMounted]);
 
   const addToCart = (product: Product, quantity: number = 1) => {
     setCart((currentCart) => {
@@ -33,12 +50,12 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         // Product already in cart, just increase quantity
         const newCart = [...currentCart];
         newCart[index].quantity += quantity;
-        console.log("Product is already in the cart. Updated cart: ", newCart); // Debugging line
+        console.log("Product is already in the cart. Updated cart: ", newCart); 
         return newCart;
       } else {
         // Product not in cart, add new item
         const newCart = [...currentCart, { product, quantity }];
-        console.log("Product is not in the cart. Updated cart: ", newCart); // Debugging line
+        console.log("Product is not in the cart. Updated cart: ", newCart); 
         return newCart;
       }
     });
@@ -53,6 +70,9 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const emptyCart = () => {
     setCart([]);
   };
+  if (!hasMounted) {
+    return null;
+  }
 
   return (
     <CartContext.Provider
