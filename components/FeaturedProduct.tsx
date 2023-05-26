@@ -1,11 +1,17 @@
 import React from "react";
 import Image from "next/image";
+import { useRouter } from "next/router"; // import useRouter from next/router
 
 type FeaturedProductProps = {
-  product: any; // replace 'any' with the type of your product
+  product: any; 
 };
 
 const FeaturedProduct: React.FC<FeaturedProductProps> = ({ product }) => {
+  const router = useRouter(); // initialize useRouter
+
+  const handleBuyNowClick = () => {
+    router.push(`/products/${product._id}`); // navigate to the product page when Buy Now is clicked
+  };
   return (
     <div className="border-lime-700 border-4 flex flex-col sm:flex-row items-center  py-10 lg:w-[1100px] mb-4">
       <div className="px-4 w-full sm:w-1/2">
@@ -24,7 +30,10 @@ const FeaturedProduct: React.FC<FeaturedProductProps> = ({ product }) => {
           {product.description}
         </p>
         <div className="text-center">
-          <button className="bg-blue-600 text-white px-4 py-2 rounded mt-4">
+          <button
+            onClick={handleBuyNowClick}
+            className="bg-blue-600 text-white px-4 py-2 rounded mt-4"
+          >
             Buy Now
           </button>
         </div>

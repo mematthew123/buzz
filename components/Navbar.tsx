@@ -119,18 +119,11 @@ const Navbar = () => {
             >
               <Link href="/contact">Contact</Link>
             </li>
-            <li className="p-4">
-              <Link href="/cart">
-                <p>
-                  <AiOutlineShoppingCart
-                    size={20}
-                    style={{ color: `${textColor}` }}
-                  />
-                  {getTotalItemsInCart() > 0 && (
-                    <span>{getTotalItemsInCart()}</span>
-                  )}
-                </p>
-              </Link>
+            <li
+              onClick={handleNav}
+              className="p-4 text-4xl hover:text-gray-500"
+            >
+              <Link href="/cart">Cart</Link>
             </li>
           </ul>
         </div>

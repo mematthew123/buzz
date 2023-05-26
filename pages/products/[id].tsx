@@ -25,9 +25,15 @@ export const getStaticProps: GetStaticProps = async (context) => {
     }
   `);
 
+  if (!product[0]) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
     props: {
-      product: product[0],
+      product: product[0] || null,
     },
     revalidate: 60,
   };
@@ -46,6 +52,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return { paths, fallback: "blocking" };
 };
+
 const ProductPage: React.FC<{ product: Product }> = ({ product }) => {
   const router = useRouter();
 
