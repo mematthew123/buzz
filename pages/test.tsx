@@ -1,8 +1,11 @@
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { client } from "@/sanity/lib/client";
 import Hero from "@/components/Hero";
-import FeaturedProduct from "@/components/FeaturedProduct";  // import the FeaturedProduct component
 import { getFeaturedProduct } from "@/sanity/queries/getProducts";  // import the featured product query
+import StrainList from "@/components/StrainList";
+import ProductList from "@/components/ProductList";
+import Menu from "@/components/Menu";
+import Collections from "@/components/Collections";
 
 export const getStaticProps: GetStaticProps = async () => {
   const [heroData, featuredProduct] = await Promise.all([
@@ -33,8 +36,11 @@ const aboutPage: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
   return (
     <div>
       <Hero heroData={heroData} />
-      <FeaturedProduct product={featuredProduct} />  {/* Render the FeaturedProduct component */}
-      {/* Rest of your page components go here */}
+   {/* <StrainList />
+   <ProductList /> */}
+   {/* <Menu /> */}
+   <Collections collections={[]} />
+   
     </div>
   );
 };

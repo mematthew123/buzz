@@ -4,13 +4,15 @@ import Hero from "@/components/Hero";
 
 export const getStaticProps: GetStaticProps = async () => {
   const heroData = await client.fetch(`
-    *[_type == "hero"][0]{
-      title,
-      description,
-      "heroImage": heroImage.asset->url,
-      "alt": heroImage.alt
-    }
-  `);
+  *[_type == "hero"][0]{
+    title,
+    description,
+    "heroImage": heroImage.asset->url,
+    "alt": heroImage.alt,
+    textPosition
+  }
+`);
+
 
   return {
     props: {

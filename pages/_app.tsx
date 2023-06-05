@@ -6,7 +6,6 @@ import blurStyles from "../components/blur.module.css";
 import "@/styles/globals.css";
 import Layout from "@/components/Layout";
 import { CartProvider } from "@/context/cartContext";
-import Navbar from "@/components/Navbar";
 
 export default function App({ Component, pageProps }: AppProps) {
   const [isOpen, setIsOpen] = useState(true);
@@ -15,7 +14,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <CartProvider>
       <ModalContext.Provider value={{ isOpen, setIsOpen }}>
         <AgeVerifyModal />
-        <Navbar />
+        {/* <Navbar /> */}
         <div className={isOpen ? blurStyles.blur : ""}>
           <Layout>
             <Component {...pageProps} />{" "}
