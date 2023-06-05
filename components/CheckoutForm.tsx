@@ -14,22 +14,30 @@ const CheckoutForm: React.FC = () => {
   if (!cartContext) {
     throw new Error("CheckoutForm must be used within a CartProvider");
   }
-
+  // Retrieve the items in the user's cart from the CartContext
   const { emptyCart } = cartContext;
 
   const handleOrderConfirmation = async () => {
     console.log("Confirm order");
     router.push("/thank-you"); // redirect to thank you page
-    emptyCart(); 
+    emptyCart();
+
+    const { cart } = cartContext;
+
+    const cartItemsString = cart
+      .map((item) => `${item.quantity} x ${item.product.title}`)
+      .join(", ");
 
     const response = await fetch("/api/twilio", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         to: phone,
-        body: `Thank you for your order, ${name}!`,
+        body: `Thank you for your order, ${name}! Your order includes: ${cartItemsString}`,
       }),
     });
+
+    console.log(response);
 
     if (!response.ok) {
       throw new Error("Failed to send SMS");
@@ -41,12 +49,16 @@ const CheckoutForm: React.FC = () => {
 
   return (
     <form className="w-full max-w-lg mx-auto bg-white rounded-xl shadow-md p-8 space-y-5">
-      <h2 className="text-center text-2xl font-semibold text-gray-800">Checkout</h2>
+      <h2 className="text-center text-2xl font-semibold text-gray-800">
+        Checkout
+      </h2>
 
       <div className="flex flex-wrap -mx-3 mb-6">
         <div className="w-full px-3">
           <div className="relative mt-5">
-            <label htmlFor="name" className="text-sm font-medium text-gray-600">Name</label>
+            <label htmlFor="name" className="text-sm font-medium text-gray-600">
+              Name
+            </label>
             <input
               type="text"
               name="name"
@@ -59,7 +71,12 @@ const CheckoutForm: React.FC = () => {
           </div>
 
           <div className="relative mt-5">
-            <label htmlFor="grid-date-of-birth" className="text-sm font-medium text-gray-600">Date of Birth</label>
+            <label
+              htmlFor="grid-date-of-birth"
+              className="text-sm font-medium text-gray-600"
+            >
+              Date of Birth
+            </label>
             <input
               id="grid-date-of-birth"
               type="date"
@@ -68,7 +85,12 @@ const CheckoutForm: React.FC = () => {
           </div>
 
           <div className="relative mt-5">
-            <label htmlFor="grid-email" className="text-sm font-medium text-gray-600">Email</label>
+            <label
+              htmlFor="grid-email"
+              className="text-sm font-medium text-gray-600"
+            >
+              Email
+            </label>
             <input
               id="grid-email"
               type="email"
@@ -79,7 +101,12 @@ const CheckoutForm: React.FC = () => {
           </div>
 
           <div className="relative mt-5">
-            <label htmlFor="grid-phone" className="text-sm font-medium text-gray-600">Phone</label>
+            <label
+              htmlFor="grid-phone"
+              className="text-sm font-medium text-gray-600"
+            >
+              Phone
+            </label>
             <input
               id="grid-phone"
               type="tel"
