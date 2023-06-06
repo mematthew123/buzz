@@ -1,11 +1,26 @@
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
-import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import {
+  AiOutlineMenu,
+  AiOutlineClose,
+  AiOutlineShoppingCart,
+} from "react-icons/ai";
+import { useContext } from "react";
+import CartContext from "@/context/cartContext";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
   const [color, setColor] = useState("transparent");
   const [textColor, setTextColor] = useState("white");
+
+  const { cart } = useContext(CartContext)!; // Non-null assertion here
+  const getTotalItemsInCart = () => {
+    let total = 0;
+    for (let item of cart) {
+      total += item.quantity;
+    }
+    return total;
+  };
 
   const handleNav = () => {
     setNav(!nav);
@@ -48,6 +63,19 @@ const Navbar = () => {
           <li className="p-4">
             <Link href="/contact">Contact</Link>
           </li>
+          <li className="p-4">
+            <Link href="/cart">
+              <p>
+                <AiOutlineShoppingCart
+                  size={20}
+                  style={{ color: `${textColor}` }}
+                />
+                {getTotalItemsInCart() > 0 && (
+                  <span>{getTotalItemsInCart()}</span>
+                )}
+              </p>
+            </Link>
+          </li>
         </ul>
 
         {/* Mobile Button */}
@@ -77,7 +105,7 @@ const Navbar = () => {
               onClick={handleNav}
               className="p-4 text-4xl hover:text-gray-500"
             >
-              <Link href="/shop">Shop</Link>
+              <Link href="/menu">Shop</Link>
             </li>
             <li
               onClick={handleNav}
@@ -90,6 +118,12 @@ const Navbar = () => {
               className="p-4 text-4xl hover:text-gray-500"
             >
               <Link href="/contact">Contact</Link>
+            </li>
+            <li
+              onClick={handleNav}
+              className="p-4 text-4xl hover:text-gray-500"
+            >
+              <Link href="/cart">Cart</Link>
             </li>
           </ul>
         </div>

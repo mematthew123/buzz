@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { strainData } from "../data/strainData";
 import { Strain } from "@/interfaces/strains.interfaces";
-import { Product, productData } from "../data/productData";
+import { client } from "@/sanity/lib/client";
+import { Product } from "@/interfaces/products.interfaces";
 
 const questions = [
   {
@@ -40,9 +41,36 @@ const questions = [
 ];
 
 const Quiz: React.FC = () => {
+  const [products, setProducts] = useState<Product[]>([]); // To store product data
   const [answers, setAnswers] = useState<Array<string>>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [result, setResult] = useState<Product | null>(null); // Add this line
+  const [result, setResult] = useState<Product | null>(null);
+
+  // Fetch products from Sanity
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const products = await client.fetch(`
+        *[_type == "product"]{
+          _id,
+          title,
+          description,
+          type,
+          productType,
+          thc,
+          cbd,
+          price,
+          size,
+          "imageUrl": images[0].asset->url,
+        }
+      `);
+      setProducts(products);
+    };
+
+    fetchProducts();
+  }, []);
+
+
+  
 
   // show the results of the quiz
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -54,28 +82,21 @@ const Quiz: React.FC = () => {
 
   const getBestProduct = (answers: string[]): Product => {
     const experienceAnswer = answers[2];
-
-    let bestProduct = productData[0]; // Default to the first product
-
+  
+    let bestProduct = products[0]; // Default to the first product
+  
     // Update the algo to get the best product for the user based on their preferences
-    // For example, you can use the product type or any other property you find relevant
     if (experienceAnswer === "I'm a total newbie") {
-      bestProduct =
-        productData.find((product) => product.thc <= 20) || bestProduct;
+      bestProduct = products.find((product) => Number(product.thc) <= 20) || bestProduct;
     } else if (experienceAnswer === "I've tried it a few times") {
-      bestProduct =
-        productData.find((product) => product.thc > 20 && product.thc <= 25) ||
-        bestProduct;
-    } else if (
-      experienceAnswer === "I'm a regular user" ||
-      experienceAnswer === "I'm a seasoned veteran"
-    ) {
-      bestProduct =
-        productData.find((product) => product.thc > 25) || bestProduct;
+      bestProduct = products.find((product) => Number(product.thc) > 20 && Number(product.thc) <= 25) || bestProduct;
+    } else if (experienceAnswer === "I'm a regular user" || experienceAnswer === "I'm a seasoned veteran") {
+      bestProduct = products.find((product) => Number(product.thc) > 25) || bestProduct;
     }
-
+  
     return bestProduct;
   };
+  
 
   const handleOptionChange = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -104,10 +125,10 @@ const Quiz: React.FC = () => {
     return (
       <div className="bg-white text-gray-700 p-8 rounded-lg w-[sm:420px] lg:w-[580px]  mx-auto shadow-lg">
         <h1 className="text-2xl mb-6">Your Best Product</h1>
-        <h2 className="text-xl mb-4">Name: {result.name}</h2>
+        <h2 className="text-xl mb-4">Name: {result.title}</h2>
         <img
-          src={result.image}
-          alt={result.name}
+          src={result.imageUrl}
+          alt={result.title}
           className="w-full h-48 object-cover object-center rounded-t-lg"
         />
         <p>Type: {result.type}</p>

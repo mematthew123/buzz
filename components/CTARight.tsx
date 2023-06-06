@@ -3,8 +3,8 @@ import QuizModal from "./QuizModal";
 
 const CTARight = () => {
   return (
-    <div className="flex flex-col sm:flex-row items-center justify-between py-10 mb-4">
-        <div className="w-full sm:w-1/2">
+    <div className="  border-lime-700 border-4 flex flex-col sm:flex-row items-center justify-between py-10 mb-4">
+      <div className=" px-4  w-full sm:w-1/2">
         <img
           src="/flowerSunset.png"
           alt="A description of the image"
@@ -12,7 +12,7 @@ const CTARight = () => {
           loading="lazy"
         />
       </div>
-      <div className="text-center mb-4 sm:mb-0">
+      <div className=" px-4 text-center mb-4 sm:mb-0">
         <h2 className="text-3xl font-bold mb-4">Your Call to Action</h2>
         <p className="text-lg text-center max-w-md mx-auto">
           Add a brief description or some persuasive text here to encourage
@@ -25,7 +25,6 @@ const CTARight = () => {
           {/* <QuizModal /> */}
         </div>
       </div>
-      
     </div>
   );
 };

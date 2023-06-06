@@ -25,10 +25,9 @@ const features = [
 
 const WhyUs = () => {
   return (
-    <div className="mx-auto container h-[1200px] sm:mb-12">
+    <div className="mx-auto container lg:h-auto sm:h-[1200px] ">
       <div className="mx-auto text-center rounded-lg">
-        <div className="lg:h-[577px] lg:w-[1280px] relative  h-[902px] rounded-lg">
-          <h2 className="font-bold pt-20 lg:pt-10 text-gray-800 text-[40px] leading-[48px] text-center">
+         <h2 className="font-bold pt-20  text-gray-800 text-[40px] leading-[48px] text-center">
             Why choose us?
           </h2>
           <p className="pt-10 lg:pt-20 line-clamp-3 text-gray-800 text-[20px] leading-[28px] text-center">
@@ -54,7 +53,6 @@ const WhyUs = () => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 
