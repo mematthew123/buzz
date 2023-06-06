@@ -1,5 +1,5 @@
 import QuizModal from '@/components/QuizModal'
-import Quiz from '@/components/Quiz'
+import Quiz from '@/components/quiz'
 import React from 'react'
 
 const quiz = () => {
