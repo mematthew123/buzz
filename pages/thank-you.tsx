@@ -1,7 +1,10 @@
+import Navbar from '@/components/Navbar'
 import React from 'react'
 
 const ThankYouPage = () => {
   return (
+    <>    
+    <Navbar/>
     <div className='container mx-auto px-6 py-8'>
       <div className='mx-auto text-center rounded-lg p-4 shadow-lg'>
         <h2 className='font-bold pt-20  text-gray-800 text-4xl leading-[48px] text-center'>
@@ -22,6 +25,8 @@ const ThankYouPage = () => {
         </h2>
       </div>
     </div>
+    </>
+
   )
 }
 

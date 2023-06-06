@@ -9,6 +9,7 @@ import { client } from "@/sanity/lib/client";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Image from "next/image";
 import { getFeaturedProduct } from "@/sanity/queries/getProducts";  
+import Navbar from "@/components/Navbar";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -43,6 +44,7 @@ const Home: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
   return (
     <>
       <div>
+        <Navbar />
         <div className="h-[95vh] w-full relative">
           <div className="text-white absolute inset-0 flex flex-col justify-center items-center text-center small:text-left small:justify-end small:items-start small:p-32">
             <Image
