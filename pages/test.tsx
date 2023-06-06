@@ -6,6 +6,7 @@ import StrainList from "@/components/StrainList";
 import ProductList from "@/components/ProductList";
 import Menu from "@/components/Menu";
 import Collections from "@/components/Collections";
+import Navbar from "@/components/Navbar";
 
 export const getStaticProps: GetStaticProps = async () => {
   const [heroData, featuredProduct] = await Promise.all([
@@ -35,6 +36,7 @@ const aboutPage: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
 }) => {
   return (
     <div>
+      <Navbar />
       <Hero heroData={heroData} />
    {/* <StrainList />
    <ProductList /> */}

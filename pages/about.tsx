@@ -1,6 +1,7 @@
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { client } from "@/sanity/lib/client";
 import Hero from "@/components/Hero";
+import Navbar from "@/components/Navbar";
 
 export const getStaticProps: GetStaticProps = async () => {
   const heroData = await client.fetch(`
@@ -27,6 +28,7 @@ const aboutPage: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
 }) => {
   return (
     <div>
+      <Navbar />
       <Hero heroData={heroData} />
       {/* Rest of your page components go here */}
     </div>

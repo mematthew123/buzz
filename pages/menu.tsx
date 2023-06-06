@@ -5,6 +5,7 @@ import { InferGetStaticPropsType } from "next";
 import { Product } from "@/interfaces/products.interfaces";
 import Link from "next/link";
 import Image from "next/image";
+import Navbar from "@/components/Navbar";
 
 
 
@@ -49,6 +50,8 @@ const Menu: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
   };
 
   return (
+    <>
+    <Navbar />
     <div className="container mx-auto px-4 py-20">
       <h1 className="text-4xl font-bold mb-8">Menu</h1>
       <div className="flex justify-end mb-4">
@@ -123,6 +126,7 @@ const Menu: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
           ))}
       </div>
     </div>
+    </>
   );
 };
 
