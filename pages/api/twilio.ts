@@ -7,8 +7,8 @@ const client = twilio(accountSid, authToken);
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') {
-    const {to, body } = req.body;
-    client.messages
+    const { to, body } = req.body;
+    return client.messages
       .create({ body, from: '+18775897551', to })
       .then((message: any) => {
         res.status(200).json({ sid: message.sid });
@@ -22,4 +22,3 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     res.status(405).end(`Method ${req.method} Not Allowed`);
   }
 };
-
