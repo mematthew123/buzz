@@ -1,29 +1,33 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import QuizModal from "./QuizModal";
+import Image from "next/image";
 
 const CTA = () => {
   return (
-    <div className="border-4 flex flex-col lg:flex-row items-center py-10 lg:w-[1100px] mb-4">
-      <div className="px-4 w-full lg:w-1/2 text-center mb-4 lg:mb-0">
-        <h2 className="text-3xl font-bold mb-4">Your Call to Action</h2>
-        <p className="text-lg text-center max-w-md mx-auto">
+    <div className="bg-[#E9EDC9] flex flex-col lg:flex-row items-center p-4 lg:p-10 space-y-4 lg:space-y-0 lg:space-x-4 lg:w-[1100px] max-w-full mx-auto mb-20 rounded-md shadow-lg border border-gray-200">
+      <div className="w-full lg:w-1/2 text-center">
+        <h2 className="text-3xl font-bold mb-2">Your Call to Action</h2>
+        <p className="text-lg mb-4 max-w-md mx-auto">
           Add a brief description or some persuasive text here to encourage
           users to take action.
         </p>
-        <div className="text-center">
-          <QuizModal />
+        <div className='hidden lg:block'>
+        <QuizModal />
         </div>
       </div>
-      <div className="px-4 w-full lg:w-1/2">
-        <img
+      <div className="w-full lg:w-1/2 aspect-w-1 aspect-h-1 lg:aspect-none shadow-inner">
+        <Image
           src="/shiplapCannabis.png"
           alt="A description of the image"
-          className="w-full h-auto rounded-md"
+          className="w-full h-auto rounded-md object-cover"
           loading="lazy"
           width={500}
           height={500}
         />
+      </div>
+      <div className='lg:hidden'>
+      <QuizModal />
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { ArrowRightIcon } from "@heroicons/react/outline";
 
-type TextPosition = 'left' | 'center' | 'right';
+type TextPosition = "left" | "center" | "right";
 
 interface HeroData {
   title: string;
@@ -11,7 +11,6 @@ interface HeroData {
   alt: string;
   textPosition: TextPosition;
 }
-
 
 const Hero: React.FC<{ heroData: HeroData }> = ({ heroData }) => {
   const textPositionClasses: Record<TextPosition, string> = {
@@ -22,7 +21,8 @@ const Hero: React.FC<{ heroData: HeroData }> = ({ heroData }) => {
 
   console.log(heroData.textPosition);
 
-  const positionClass = textPositionClasses[heroData.textPosition] || "justify-center items-center";
+  const positionClass =
+    textPositionClasses[heroData.textPosition] || "justify-center items-center";
 
   return (
     <div>
@@ -33,7 +33,9 @@ const Hero: React.FC<{ heroData: HeroData }> = ({ heroData }) => {
           className="absolute inset-0 object-cover h-[100vh] w-full z-0"
           draggable="false"
         />
-        <div className={`text-white absolute inset-0 flex flex-col text-center small:text-left small:p-32 ${positionClass}`}>
+        <div
+          className={`text-white absolute inset-0 flex flex-col text-center small:text-left small:p-32 ${positionClass}`}
+        >
           <h2 className="text-4xl mb-4">{heroData.title}</h2>
           <p className=" flex font-extrabold text-xl text-center align-middle left-50% top-50%  text-base-regular max-w-[32rem] mb-6 drop-shadow-md shadow-black">
             {heroData.description}

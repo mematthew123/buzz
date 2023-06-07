@@ -53,7 +53,7 @@ const Menu: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
     <>
     <Navbar />
     <div className="container mx-auto px-4 py-20">
-      <h1 className="text-4xl font-bold mb-8">Menu</h1>
+      {/* <h1 className="text-4xl font-bold mb-8">Menu</h1> */}
       <div className="flex justify-end mb-4">
         <select
           value={selectedFilter}
@@ -76,6 +76,7 @@ const Menu: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
           <option value="All">All</option>
           <option value="Vape">Vape</option>
           <option value="Edible">Edible</option>
+          <option value="Flower">Flower</option>
           {/* Add more product types as needed */}
         </select>
       </div>
