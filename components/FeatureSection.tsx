@@ -1,19 +1,31 @@
 import React from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 
 interface FeatureSectionProps {
   category: string;
   title: string;
   description: string;
+  initial?: Object;
+  animate?: Object;
+  transition?: Object;
 }
 
-const FeatureSection = ({
+const FeatureSection: React.FC<FeatureSectionProps> = ({
   category,
   title,
   description,
-}: FeatureSectionProps) => {
+  initial,
+  animate,
+  transition,
+}) => {
   return (
-    <section className="text-gray-600 body-font ">
+    <motion.section
+      className="text-gray-600 body-font"
+      initial={initial}
+      animate={animate}
+      transition={transition}
+    >
       <div className="container px-5 py-24 mx-auto">
         <div className="flex flex-wrap -m-4">
           <div className="p-4 lg:w-[400px] md:w-1/2">
@@ -44,7 +56,7 @@ const FeatureSection = ({
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

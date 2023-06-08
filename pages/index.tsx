@@ -10,8 +10,14 @@ import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Image from "next/image";
 import { getFeaturedProduct } from "@/sanity/queries/getProducts";
 import Navbar from "@/components/Navbar";
+import { Fraunces } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Fraunces({
+  subsets: ["latin"],
+  style: "normal",
+  variable: "--font-fraunces",
+  weight: "900",
+});
 
 export const getStaticProps: GetStaticProps = async () => {
   const [heroData, featuredProduct] = await Promise.all([
@@ -43,7 +49,7 @@ const Home: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
     <>
       <div>
         <Navbar />
-        <div className="h-[90vh] w-full relative">
+        <div className="h-[95vh] w-full relative">
           <div className="text-gray-50 absolute inset-0 flex flex-col justify-center items-center text-center small:text-left small:justify-end small:items-start small:p-32">
             {/* <Image
               src="/magazine.jpg"
@@ -56,16 +62,21 @@ const Home: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
             /> */}
             {/* <div className=" bg-gray-600 bg-blend-overlay bg-opacity-50 absolute inset-0"></div> */}
 
-            <h1 className="  drop-shadow-lg flex font-extrabold underline text-6xl  text-center align-middle left-50% top-50% mb-6  shadow-black">
+            <h1
+              className={
+                inter.className +
+                " text-6xl font-bold text-gray-600 text-center underline drop-shadow-lg shadow-black"
+              }
+            >
               Kootanei Organics
             </h1>
-            <p className="  flex font-extrabold  text-center align-middle left-50% top-50%    mb-6 drop-shadow-lg shadow-black">
+            <p className=" mt-4  flex font-extrabold  text-center align-middle left-50% top-50%    mb-6 drop-shadow-lg shadow-black">
               Organic small batch cannabis grown in the heart of western Montana
             </p>
           </div>
         </div>
         <Link href="/menu">
-          <div className="flex items-center font-bold underline  text-xl border-b border-current gap-x-4 py-2 transition-all duration-300 group hover:pl-4 hover:pr-1">
+          <div className="flex items-center font-bold underline mb-24  text-xl border-b border-current gap-x-4 py-2 transition-all duration-300 group hover:pl-4 hover:pr-1">
             <span>Shop Now</span>
             <ArrowRightIcon className="w-5 h-5 group-hover:transform group-hover:translate-x-1 transition-all duration-300" />
           </div>
@@ -73,23 +84,36 @@ const Home: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
         <div className=" flex justify-center items-center text-center ">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
             <FeatureSection
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.9, delay: 2.5, ease: "easeInOut" }}
               category="CATEGORY"
               title="Vapes Carts"
               description="Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat."
             />
             <FeatureSection
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.9, delay: 3.0, ease: "easeInOut" }}
               category="CATEGORY"
               title="Pre-Rolls"
               description="Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat."
             />
             <FeatureSection
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.9, delay: 3.5, ease: "easeInOut" }}
               category="CATEGORY"
               title="Edibles"
               description="Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat."
             />
           </div>
         </div>
-        <CTA />
+        <CTA
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.9, delay: 4.5, ease: "easeInOut" }}
+        />
         <WhyUs />
         <FeaturedProduct product={featuredProduct} />{" "}
         {/* Render the FeaturedProduct component */}
