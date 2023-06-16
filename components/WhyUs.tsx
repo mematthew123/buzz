@@ -1,6 +1,7 @@
 import React from "react";
 import { GiFlowerPot } from "react-icons/gi";
 import { Merriweather, Barlow } from "next/font/google";
+import { motion } from 'framer-motion';
 
 const features = [
   {
@@ -51,14 +52,17 @@ const WhyUs = () => {
       {/* features container */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {features.map(({ title, description }, index) => (
-          <div
+          <motion.div
             key={index}
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 4.7, delay: index * 2.0, ease: "easeInOut" }}
             className="bg-gray-300 flex flex-col items-center justify-center p-6 rounded-lg shadow-lg space-y-4"
           >
             <GiFlowerPot className="text-6xl text-white" />
             <h3 className="text-2xl font-semibold text-white">{title}</h3>
             <p className="text-center lg:text-lg text-white">{description}</p>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>
