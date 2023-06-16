@@ -1,50 +1,40 @@
+import React from "react";
+import { getFeatured } from "@/sanity/queries/getFeatured";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { client } from "@/sanity/lib/client";
-import Hero from "@/components/Hero";
-import { getFeaturedProduct } from "@/sanity/queries/getProducts";  // import the featured product query
-import StrainList from "@/components/StrainList";
-import ProductList from "@/components/ProductList";
-import Menu from "@/components/Menu";
-import Collections from "@/components/Collections";
-import Navbar from "@/components/Navbar";
+import Featured from "@/components/Featured";
+import Reviews from "@/components/Reviews";
+import Testimonials from "@/components/Testimonials";
 
 export const getStaticProps: GetStaticProps = async () => {
-  const [heroData, featuredProduct] = await Promise.all([
-    client.fetch(`
-      *[_type == "hero"][0]{
-        title,
-        description,
-        "heroImage": heroImage.asset->url,
-        "alt": heroImage.alt
-      }
-    `),
-    client.fetch(getFeaturedProduct),
-  ]);
+  const featuredData = await client.fetch(`
+  *[_type == "featured"][0]{
+    title,
+    description,
+    "featuredImage": featuredImage.asset->url,
+    "alt": featuredImage.alt,
+    textPosition
+  }
+`);
 
   return {
     props: {
-      heroData,
-      featuredProduct,
+      featuredData,
     },
     revalidate: 60, // ISR, re-generate the site every 60 seconds if there's a request
   };
 };
 
-const aboutPage: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
-  heroData,
-  featuredProduct,  // add the featured product prop here
+const testPage: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
+  featuredData,
 }) => {
   return (
     <div>
-      <Navbar />
-      <Hero heroData={heroData} />
-   {/* <StrainList />
-   <ProductList /> */}
-   {/* <Menu /> */}
-   <Collections collections={[]} />
-   
+      <Featured featuredData={featuredData} />
+      <Testimonials />
+      <Reviews />
     </div>
   );
 };
 
-export default aboutPage;
+export default testPage;

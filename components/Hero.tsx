@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { ArrowRightIcon } from "@heroicons/react/outline";
+import { ArrowLongRightIcon } from "@heroicons/react/20/solid";
 
 type TextPosition = "left" | "center" | "right";
 
@@ -47,7 +47,7 @@ const Hero: React.FC<{ heroData: HeroData }> = ({ heroData }) => {
         <Link href="/strains">
           <div className="flex items-center text-large-regular border-b border-current gap-x-4 py-2 transition-all duration-300 group hover:pl-4 hover:pr-1">
             <span>Check it out</span>
-            <ArrowRightIcon className="w-5 h-5 group-hover:transform group-hover:translate-x-1 transition-all duration-300" />
+            <ArrowLongRightIcon className="w-5 h-5 group-hover:transform group-hover:translate-x-1 transition-all duration-300" />
           </div>
         </Link>
       </div>

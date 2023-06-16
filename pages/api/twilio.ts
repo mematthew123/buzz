@@ -9,7 +9,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') {
     const { to, body } = req.body;
     return client.messages
-      .create({ body, from: '+18775897551', to })
+      .create({ body, from: '+18666958370', to })
       .then((message: any) => {
         res.status(200).json({ sid: message.sid });
       })

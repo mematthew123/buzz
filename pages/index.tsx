@@ -1,6 +1,6 @@
 import { Inter } from "next/font/google";
 import Link from "next/link";
-import { ArrowRightIcon } from "@heroicons/react/outline";
+import { ArrowLongRightIcon } from "@heroicons/react/20/solid";
 import FeatureSection from "@/components/FeatureSection";
 import CTA from "@/components/CTA";
 import WhyUs from "@/components/WhyUs";
@@ -11,6 +11,10 @@ import Image from "next/image";
 import { getFeaturedProduct } from "@/sanity/queries/getProducts";
 import Navbar from "@/components/Navbar";
 import { Fraunces } from "next/font/google";
+import MenuBoard from "@/components/MenuBoard";
+import Testimonials from "@/components/Testimonials";
+import Footer from "@/components/Footer";
+import Content from "@/components/Content";
 
 const inter = Fraunces({
   subsets: ["latin"],
@@ -49,7 +53,7 @@ const Home: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
     <>
       <div>
         <Navbar />
-        <div className="h-[95vh] w-full relative">
+        <div className="max-w-[1240px] h-[85vh] m-auto flex justify-between items-center p-4 text-white">
           <div className="text-gray-50 absolute inset-0 flex flex-col justify-center items-center text-center small:text-left small:justify-end small:items-start small:p-32">
             {/* <Image
               src="/magazine.jpg"
@@ -70,7 +74,7 @@ const Home: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
             >
               Kootanei Organics
             </h1>
-            <p className=" mt-4  flex font-extrabold  text-center align-middle left-50% top-50%    mb-6 drop-shadow-lg shadow-black">
+            <p className=" mt-4 text-gray-600  flex font-extrabold  text-center align-middle left-50% top-50%    mb-6 drop-shadow-lg shadow-black">
               Organic small batch cannabis grown in the heart of western Montana
             </p>
           </div>
@@ -78,7 +82,7 @@ const Home: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
         <Link href="/menu">
           <div className="flex items-center font-bold underline mb-24  text-xl border-b border-current gap-x-4 py-2 transition-all duration-300 group hover:pl-4 hover:pr-1">
             <span>Shop Now</span>
-            <ArrowRightIcon className="w-5 h-5 group-hover:transform group-hover:translate-x-1 transition-all duration-300" />
+            <ArrowLongRightIcon className="w-5 h-5 group-hover:transform group-hover:translate-x-1 transition-all duration-300" />
           </div>
         </Link>
         <div className=" flex justify-center items-center text-center ">
@@ -109,14 +113,18 @@ const Home: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
             />
           </div>
         </div>
-        <CTA
+        <MenuBoard specials={[]} />
+        <FeaturedProduct product={featuredProduct} />
+        <Content />
+        {/* <CTA
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.9, delay: 4.5, ease: "easeInOut" }}
-        />
+        /> */}
         <WhyUs />
-        <FeaturedProduct product={featuredProduct} />{" "}
-        {/* Render the FeaturedProduct component */}
+        <Testimonials />
+   
+        <Footer />
       </div>
     </>
   );
