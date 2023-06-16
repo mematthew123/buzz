@@ -15,6 +15,7 @@ import MenuBoard from "@/components/MenuBoard";
 import Testimonials from "@/components/Testimonials";
 import Footer from "@/components/Footer";
 import Content from "@/components/Content";
+import Featured from "@/components/Featured";
 
 const inter = Fraunces({
   subsets: ["latin"],
@@ -24,21 +25,22 @@ const inter = Fraunces({
 });
 
 export const getStaticProps: GetStaticProps = async () => {
-  const [heroData, featuredProduct] = await Promise.all([
+  const [featuredData, featuredProduct] = await Promise.all([
     client.fetch(`
-      *[_type == "hero"][0]{
-        title,
-        description,
-        "heroImage": heroImage.asset->url,
-        "alt": heroImage.alt
-      }
+    *[_type == "featured"][0]{
+      title,
+      description,
+      "featuredImage": featuredImage.asset->url,
+      "alt": featuredImage.alt,
+      textPosition
+    }
     `),
     client.fetch(getFeaturedProduct),
   ]);
 
   return {
     props: {
-      heroData,
+      featuredData,
       featuredProduct,
     },
     revalidate: 60, // ISR, re-generate the site every 60 seconds if there's a request
@@ -46,8 +48,8 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 const Home: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
-  heroData,
-  featuredProduct, // add the featured product prop here
+  featuredProduct,
+  featuredData // add the featured product prop here
 }) => {
   return (
     <>
@@ -55,16 +57,6 @@ const Home: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
         <Navbar />
         <div className="max-w-[1240px] h-[85vh] m-auto flex justify-between items-center p-4 text-white">
           <div className="text-gray-50 absolute inset-0 flex flex-col justify-center items-center text-center small:text-left small:justify-end small:items-start small:p-32">
-            {/* <Image
-              src="/magazine.jpg"
-              loading="eager"
-              alt="Photo by @thevoncomplex https://unsplash.com/@thevoncomplex"
-              className="absolute inset-0 object-cover h-[95vh] w-full z-0"
-              draggable="false"
-              width={1200}
-              height={800}
-            /> */}
-            {/* <div className=" bg-gray-600 bg-blend-overlay bg-opacity-50 absolute inset-0"></div> */}
 
             <h1
               className={
@@ -85,7 +77,7 @@ const Home: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
             <ArrowLongRightIcon className="w-5 h-5 group-hover:transform group-hover:translate-x-1 transition-all duration-300" />
           </div>
         </Link>
-        <div className=" flex justify-center items-center text-center ">
+        <div className=" flex lg:w-[1400px] bg-[#E9EDC9] mb-[80px] lg:mb-[150px] justify-center items-center text-center ">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
             <FeatureSection
               initial={{ opacity: 0, x: -50 }}
@@ -116,11 +108,7 @@ const Home: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
         <MenuBoard specials={[]} />
         <FeaturedProduct product={featuredProduct} />
         <Content />
-        {/* <CTA
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.9, delay: 4.5, ease: "easeInOut" }}
-        /> */}
+        <Featured featuredData={featuredData} />
         <WhyUs />
         <Testimonials />
    
