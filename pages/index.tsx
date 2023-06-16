@@ -16,6 +16,7 @@ import Testimonials from "@/components/Testimonials";
 import Footer from "@/components/Footer";
 import Content from "@/components/Content";
 import Featured from "@/components/Featured";
+import Head from "next/head";
 
 const inter = Fraunces({
   subsets: ["latin"],
@@ -53,6 +54,10 @@ const Home: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
 }) => {
   return (
     <>
+    <Head>
+        <title>Kootanei Organics | Organic small batch cannabis in western Montana</title>
+        <meta name="description" content="Discover Kootanei Organics and our range of organic small batch cannabis products grown in the heart of western Montana. Shop for vapes, pre-rolls, edibles and more." />
+      </Head>
       <div>
         <Navbar />
         <div className="max-w-[1240px] h-[85vh] m-auto flex justify-between items-center p-4 text-white">
