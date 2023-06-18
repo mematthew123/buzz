@@ -3,7 +3,7 @@ import QuizModal from "./QuizModal";
 
 const CTARight = () => {
   return (
-    <div className="  border-lime-700 border-4 flex flex-col sm:flex-row items-center justify-between py-10 mb-4">
+    <div className=" flex flex-col sm:flex-row items-center justify-between py-10 mb-4">
       <div className=" px-4  w-full sm:w-1/2">
         <img
           src="/flowerSunset.png"
