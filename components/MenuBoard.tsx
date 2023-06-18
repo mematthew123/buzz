@@ -43,7 +43,7 @@ const MenuBoard: React.FC<Props> = () => {
   }, []);
 
   return (
-    <div className="bg-[#E9EDC9] flex flex-col lg:flex-row items-center p-4 lg:p-10 space-y-4 lg:space-y-0 lg:space-x-4 lg:w-[1100px] max-w-full mx-auto mb-20 rounded-md shadow-lg border border-gray-200">
+    <div className="bg-[#FAEDCD] flex flex-col lg:flex-row items-center p-4 lg:p-10 space-y-4 lg:space-y-0 lg:space-x-4 lg:w-[1100px] max-w-full mx-auto mb-20 rounded-md shadow-lg border border-gray-200">
         <div className="bg-gray-800 text-white mx-auto lg:w-[1100px] rounded-lg">
           <h1
             className={

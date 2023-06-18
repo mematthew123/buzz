@@ -25,7 +25,7 @@ const Featured: React.FC<{ featuredData: FeaturedData }> = ({
     textPositionClasses[featuredData.textPosition] || textPositionClasses.center;
 
   return (
-    <div className="bg-[#FAEDCD] flex flex-col lg:flex-row p-4 lg:p-10 space-y-4 lg:space-y-0 lg:space-x-4 lg:max-w-7xl mx-auto my-20 rounded-lg shadow-lg border border-gray-200">
+    <div className="bg-[#E9EDC9] flex flex-col lg:flex-row p-4 lg:p-10 space-y-4 lg:space-y-0 lg:space-x-4 lg:max-w-7xl mx-auto my-20 rounded-lg shadow-lg border border-gray-200">
       <div className="lg:w-1/2 aspect-auto shadow-inner">
         <img
           src={featuredData.featuredImage}
