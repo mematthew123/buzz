@@ -17,6 +17,7 @@ import Footer from "@/components/Footer";
 import Content from "@/components/Content";
 import Featured from "@/components/Featured";
 import Head from "next/head";
+import Layout from "@/components/Layout";
 
 const inter = Fraunces({
   subsets: ["latin"],
@@ -60,7 +61,8 @@ const Home: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
       </Head>
       <div>
         <Navbar />
-        <div className="max-w-[1240px] h-[85vh] m-auto flex justify-between items-center p-4 text-white">
+        <Layout>
+        <div className="max-w-[1240px] h-[100vh] m-auto flex justify-between items-center p-4 text-white">
           <div className="text-gray-50 absolute inset-0 flex flex-col justify-center items-center text-center small:text-left small:justify-end small:items-start small:p-32">
 
             <h1
@@ -118,6 +120,7 @@ const Home: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
         <Testimonials />
    
         <Footer />
+        </Layout>
       </div>
     </>
   );
