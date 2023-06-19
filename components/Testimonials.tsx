@@ -1,3 +1,5 @@
+import SectionUp from "@/animations/sectionUp"
+
 const testimonials = [
     {
       body: 'Laborum quis quam. Dolorum et ut quod quia. Voluptas numquam delectus nihil. Aut enim doloremque et ipsam.',
@@ -68,6 +70,7 @@ const testimonials = [
             </p>
           </div>
           <div className="mx-auto mt-16 flow-root max-w-2xl sm:mt-20 lg:mx-0 lg:max-w-none">
+            <SectionUp>
             <div className="-mt-8 sm:-mx-4 sm:columns-2 sm:text-[0] lg:columns-3">
               {testimonials.map((testimonial) => (
                 <div key={testimonial.author.handle} className="pt-8 sm:inline-block sm:w-full sm:px-4">
@@ -86,6 +89,7 @@ const testimonials = [
                 </div>
               ))}
             </div>
+            </SectionUp>
           </div>
         </div>
       </div>

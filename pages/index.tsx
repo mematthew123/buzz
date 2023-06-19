@@ -74,9 +74,8 @@ const Home: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
         <Layout>
           <Banner />
           {/* Hero section */}
-          {/* Hero section */}
-          <div className="hero bg-[#FAEDCD] border border-gray-200 shadow-lg max-w-[1240px] h-[100vh] m-auto flex flex-col justify-center items-center p-4 rounded-lg">
-            <div className="hero-content flex flex-col justify-center items-center text-center sm:items-start space-y-6">
+          <div className="  max-w-[1240px] h-[100vh] m-auto flex flex-col justify-center items-center p-4 rounded-lg">
+            <div className=" flex flex-col justify-center items-center text-center sm:items-start space-y-6">
               <h1
                 className={
                   inter.className + " text-7xl font-extrabold text-gray-800"
@@ -95,22 +94,17 @@ const Home: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
               </Link>
             </div>
           </div>
-
           <Section>
             <Featured featuredData={featuredData} />
           </Section>
           <SectionRight>
             <MenuBoard specials={[]} />
           </SectionRight>
-          {/* <FeaturedProduct product={featuredProduct} /> */}
           <SectionUp>
             <Content />
           </SectionUp>
-
-          {/* <CTARight /> */}
           <WhyUs />
           <Testimonials />
-
           <Footer />
         </Layout>
       </div>
