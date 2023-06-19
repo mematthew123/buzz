@@ -2,6 +2,9 @@ import React from 'react';
 import Link from 'next/link';
 import { client} from '@/sanity/lib/client';
 import { urlForImage } from '@/sanity/lib/image';
+import Image from 'next/image';
+import Navbar from '@/components/Navbar';
+import Layout from '@/components/Layout';
 
 type Props = {
     posts: {
@@ -22,15 +25,29 @@ type Props = {
 
 const PostsPage = ({ posts }: Props) => {
   return (
-    <div>
+    <>
+    <Navbar />
+    <Layout>
+    <div className='container mt-40 grid grid-cols-1 md:grid-cols-3 gap-4'>
       {posts.map(post => (
-        <Link href={`/post/${post.slug.current}`} key={post._id}>
+        <Link href={`/posts/${post.slug.current}`} key={post._id}>
           <p>
             <h2>{post.title}</h2>
+            <Image
+              src={urlForImage(post.mainImage.asset)
+                .width(500)
+                .height(500)
+                .url()}
+              alt={post.mainImage.alt}
+              width={500}
+              height={500}
+              />
           </p>
         </Link>
       ))}
     </div>
+    </Layout>
+    </>
   )
 }
 
