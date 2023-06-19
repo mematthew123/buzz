@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
 import Link from "next/link";
+import { useInView } from "framer-motion";
 
 type TextPosition = "left" | "center" | "right";
 
@@ -15,6 +16,9 @@ const Featured: React.FC<{ featuredData: FeaturedData }> = ({
   featuredData,
 }) => {
 
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+
   const textPositionClasses: Record<TextPosition, string> = {
     left: "lg:items-start lg:text-left",
     center: "items-center text-center",
@@ -24,7 +28,10 @@ const Featured: React.FC<{ featuredData: FeaturedData }> = ({
   const positionClass =
     textPositionClasses[featuredData.textPosition] || textPositionClasses.center;
 
+
+
   return (
+  <>
     <div className="bg-[#E9EDC9] flex flex-col lg:flex-row p-4 lg:p-10 space-y-4 lg:space-y-0 lg:space-x-4 lg:max-w-7xl mx-auto my-20 rounded-lg shadow-lg border border-gray-200">
       <div className="lg:w-1/2 aspect-auto shadow-inner">
         <img
@@ -44,6 +51,8 @@ const Featured: React.FC<{ featuredData: FeaturedData }> = ({
         </Link>
       </div>
     </div>
+    </>
+
   );
 };
 

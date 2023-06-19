@@ -20,6 +20,9 @@ import Head from "next/head";
 import Layout from "@/components/Layout";
 import Banner from "@/components/Banner";
 import CTARight from "@/components/CTARight";
+import Section from "@/animations/section";
+import SectionRight from "@/animations/sectionRight";
+import SectionUp from "@/animations/sectionUp";
 
 const inter = Fraunces({
   subsets: ["latin"],
@@ -71,57 +74,39 @@ const Home: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
         <Layout>
           <Banner />
           {/* Hero section */}
-{/* Hero section */}
-<div className="hero bg-[#FAEDCD] border border-gray-200 shadow-lg max-w-[1240px] h-[95vh] m-auto flex flex-col justify-center items-center p-4 rounded-lg">
-  <div className="hero-content flex flex-col justify-center items-center text-center sm:items-start space-y-6">
-    <h1 className={inter.className + " text-7xl font-extrabold text-gray-800"}>
-      Kootanei Organics
-    </h1>
-    <p className="text-xl font-light text-gray-600">
-      Organic small batch cannabis grown in the heart of western Montana
-    </p>
-    <Link href="/menu">
-      <p className="inline-block px-10 py-3 text-base font-medium text-white bg-green-800 rounded-lg hover:bg-green-700 transition-colors duration-200 shadow-md hover:shadow-lg">
-        Shop Now
-      </p>
-    </Link>
-  </div>
-</div>
-
-
-          {/* <div className=" flex lg:w-[1400px] bg-[#E9EDC9] mb-[80px] lg:mb-[150px] justify-center items-center text-center ">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
-            <FeatureSection
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.9, delay: 2.5, ease: "easeInOut" }}
-              category="CATEGORY"
-              title="Vapes Carts"
-              description="Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat."
-            />
-            <FeatureSection
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.9, delay: 3.0, ease: "easeInOut" }}
-              category="CATEGORY"
-              title="Pre-Rolls"
-              description="Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat."
-            />
-            <FeatureSection
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.9, delay: 3.5, ease: "easeInOut" }}
-              category="CATEGORY"
-              title="Edibles"
-              description="Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat."
-            />
+          {/* Hero section */}
+          <div className="hero bg-[#FAEDCD] border border-gray-200 shadow-lg max-w-[1240px] h-[100vh] m-auto flex flex-col justify-center items-center p-4 rounded-lg">
+            <div className="hero-content flex flex-col justify-center items-center text-center sm:items-start space-y-6">
+              <h1
+                className={
+                  inter.className + " text-7xl font-extrabold text-gray-800"
+                }
+              >
+                Kootanei Organics
+              </h1>
+              <p className="text-xl font-light text-gray-600">
+                Organic small batch cannabis grown in the heart of western
+                Montana
+              </p>
+              <Link href="/menu">
+                <p className="inline-block px-10 py-3 text-base font-medium text-white bg-green-800 rounded-lg hover:bg-green-700 transition-colors duration-200 shadow-md hover:shadow-lg">
+                  Shop Now
+                </p>
+              </Link>
+            </div>
           </div>
-        </div> */}
-          <Featured featuredData={featuredData} />
 
-          <MenuBoard specials={[]} />
+          <Section>
+            <Featured featuredData={featuredData} />
+          </Section>
+          <SectionRight>
+            <MenuBoard specials={[]} />
+          </SectionRight>
           {/* <FeaturedProduct product={featuredProduct} /> */}
-          <Content />
+          <SectionUp>
+            <Content />
+          </SectionUp>
+
           {/* <CTARight /> */}
           <WhyUs />
           <Testimonials />
