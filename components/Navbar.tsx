@@ -66,7 +66,7 @@ const Navbar = () => {
           <li className="p-4">
             <Link href="/news">News</Link>
           </li>
-          <li className="p-4">
+          {/* <li className="p-4">
             <Link href="/cart">
               <p>
                 <AiOutlineShoppingCart
@@ -78,7 +78,7 @@ const Navbar = () => {
                 )}
               </p>
             </Link>
-          </li>
+          </li> */}
         </ul>
 
         {/* Mobile Button */}

@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import blurStyles from "./blur.module.css";
+import React, { useState, useContext } from "react";
 import ModalContext from "@/context/ModalContext";
 
 const AgeVerifyModal = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const { isOpen, setIsOpen } = useContext(ModalContext);
 
   const handleConfirm = () => {
     setIsOpen(false);
@@ -13,7 +12,7 @@ const AgeVerifyModal = () => {
     <>
       {isOpen && (
         <div className="fixed z-10 inset-0 overflow-y-auto">
-          <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center">
+          <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center">
             <div
               className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
               aria-hidden="true"

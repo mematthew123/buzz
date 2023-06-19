@@ -1,11 +1,11 @@
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 
-type SectionUpProps = {
+type SectionDownProps = {
   children: any;
 };
 
-export default function SectionUp({ children }: SectionUpProps) {
+export default function SectionDown({ children }: SectionDownProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
@@ -13,7 +13,7 @@ export default function SectionUp({ children }: SectionUpProps) {
     <section ref={ref}>
       <span
         style={{
-          transform: isInView ? "none" : "translateY(200px)",
+          transform: isInView ? "none" : "translateY(2000px)",
           opacity: isInView ? 1 : 0,
           transition: "all 0.9s  0.5s",
         }}
