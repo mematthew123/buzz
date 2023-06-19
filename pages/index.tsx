@@ -87,7 +87,7 @@ const Home: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
                 Organic small batch cannabis grown in the heart of western
                 Montana
               </p>
-              <Link href="/menu">
+              <Link href="/swedeMenu">
                 <p className="inline-block px-10 py-3 text-base font-medium text-white bg-green-800 rounded-lg hover:bg-green-700 transition-colors duration-200 shadow-md hover:shadow-lg">
                   Shop Now
                 </p>

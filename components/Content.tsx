@@ -2,6 +2,7 @@ import Section from "@/animations/section";
 import SectionRight from "@/animations/sectionRight";
 import SectionUp from "@/animations/sectionUp";
 import { CameraIcon } from "@heroicons/react/20/solid";
+import Image from "next/image";
 
 export default function Content() {
   return (
@@ -54,7 +55,7 @@ export default function Content() {
             <div className="relative mx-auto max-w-prose text-base lg:max-w-none">
               <figure>
                 <div className="aspect-h-7 aspect-w-12 lg:aspect-none">
-                  <img
+                  <Image
                     className="rounded-lg object-cover object-center shadow-lg"
                     src="https://cdn.sanity.io/images/e8eui0th/production/43ebcc1916e9fcbc992f9ba0ccb90ad287e00bc7-3257x2171.jpg?w=2000&fit=max&auto=format&dpr=2"
                     alt="Whitney leaning against a railing on a downtown street"

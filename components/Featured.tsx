@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import Link from "next/link";
 import { useInView } from "framer-motion";
+import Image from "next/image";
 
 type TextPosition = "left" | "center" | "right";
 
@@ -32,10 +33,12 @@ const Featured: React.FC<{ featuredData: FeaturedData }> = ({
     <>
       <div className="bg-[#E9EDC9] flex flex-col lg:flex-row p-4 lg:p-10 space-y-4 lg:space-y-0 lg:space-x-4 lg:max-w-7xl mx-auto my-20 rounded-lg shadow-lg border border-gray-200">
         <div className="lg:w-1/2 aspect-auto shadow-inner">
-          <img
+          <Image
             src={featuredData.featuredImage}
             alt={featuredData.alt}
             className="w-full h-96 object-cover rounded-lg shadow-lg"
+            width={500}
+            height={500}
           />
         </div>
 

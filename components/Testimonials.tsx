@@ -1,4 +1,5 @@
 import SectionUp from "@/animations/sectionUp"
+import Image from "next/image"
 
 const testimonials = [
     {
@@ -79,7 +80,7 @@ const testimonials = [
                       <p>{`“${testimonial.body}”`}</p>
                     </blockquote>
                     <figcaption className="mt-6 flex items-center gap-x-4">
-                      <img className="h-10 w-10 rounded-full bg-gray-50" src={testimonial.author.imageUrl} alt="" />
+                      <Image className="h-10 w-10 rounded-full bg-gray-50" src={testimonial.author.imageUrl} height={200} width={200} alt="" />
                       <div>
                         <div className="font-semibold text-gray-900">{testimonial.author.name}</div>
                         <div className="text-gray-600">{`@${testimonial.author.handle}`}</div>
