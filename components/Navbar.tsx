@@ -11,7 +11,7 @@ import CartContext from "@/context/cartContext";
 const Navbar = () => {
   const [nav, setNav] = useState(false);
   const [color, setColor] = useState("transparent");
-  const [textColor, setTextColor] = useState("white");
+  const [textColor, setTextColor] = useState("black");
 
   const { cart } = useContext(CartContext)!; // Non-null assertion here
   const getTotalItemsInCart = () => {
@@ -29,11 +29,11 @@ const Navbar = () => {
   useEffect(() => {
     const changeColor = () => {
       if (window.scrollY >= 90) {
-        setColor("#ffffff");
+        setColor("transparent");
         setTextColor("#000000");
       } else {
         setColor("transparent");
-        setTextColor("#ffffff");
+        setTextColor("#black");
       }
     };
     window.addEventListener("scroll", changeColor);
@@ -55,7 +55,7 @@ const Navbar = () => {
             <Link href="/">Home</Link>
           </li>
           <li className="p-4">
-            <Link href="/menu">Shop</Link>
+            <Link href="/swedeMenu">Shop</Link>
           </li>
           <li className="p-4">
             <Link href="/about">About</Link>
@@ -64,6 +64,9 @@ const Navbar = () => {
             <Link href="/contact">Contact</Link>
           </li>
           <li className="p-4">
+            <Link href="/news">News</Link>
+          </li>
+          {/* <li className="p-4">
             <Link href="/cart">
               <p>
                 <AiOutlineShoppingCart
@@ -75,7 +78,7 @@ const Navbar = () => {
                 )}
               </p>
             </Link>
-          </li>
+          </li> */}
         </ul>
 
         {/* Mobile Button */}
@@ -105,7 +108,7 @@ const Navbar = () => {
               onClick={handleNav}
               className="p-4 text-4xl hover:text-gray-500"
             >
-              <Link href="/menu">Shop</Link>
+              <Link href="/swedeMenu">Shop</Link>
             </li>
             <li
               onClick={handleNav}
@@ -123,7 +126,7 @@ const Navbar = () => {
               onClick={handleNav}
               className="p-4 text-4xl hover:text-gray-500"
             >
-              <Link href="/cart">Cart</Link>
+              <Link href="/news">News</Link>
             </li>
           </ul>
         </div>

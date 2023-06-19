@@ -18,7 +18,7 @@ const FeaturedProduct: React.FC<FeaturedProductProps> = ({ product }) => {
   const router = useRouter();
 
   const handleBuyNowClick = () => {
-    router.push(`/products/${product._id}`);
+    router.push(`/swedeMenu`);
   };
 
   return (

@@ -1,29 +1,27 @@
 import React from "react";
 import QuizModal from "./QuizModal";
+import Link from "next/link";
 
 const CTARight = () => {
   return (
-    <div className="  border-lime-700 border-4 flex flex-col sm:flex-row items-center justify-between py-10 mb-4">
-      <div className=" px-4  w-full sm:w-1/2">
+    <div className="bg-[#E9EDC9] flex flex-col lg:flex-row p-4 lg:p-10 space-y-4 lg:space-y-0 lg:space-x-4 lg:max-w-7xl mx-auto my-20 rounded-lg shadow-lg border border-gray-200">
+      <div className="lg:w-1/2 aspect-auto shadow-inner">
         <img
           src="/flowerSunset.png"
           alt="A description of the image"
-          className="w-full h-auto rounded-md"
+          className="w-full h-96 object-cover rounded-lg shadow-lg"
           loading="lazy"
         />
       </div>
-      <div className=" px-4 text-center mb-4 sm:mb-0">
-        <h2 className="text-3xl font-bold mb-4">Your Call to Action</h2>
-        <p className="text-lg text-center max-w-md mx-auto">
-          Add a brief description or some persuasive text here to encourage
-          users to take action.
-        </p>
-        <div className="text-center">
-          <button className="bg-blue-600 text-white px-4 py-2 rounded mt-4">
-            Take Action
-          </button>
-          {/* <QuizModal /> */}
-        </div>
+   
+      <div className={`flex-1 flex flex-col justify-center  space-y-4`}>
+        <h2 className="text-3xl font-extrabold text-gray-800">Here is a title</h2>
+        <p className="text-lg text-gray-600">Check out this awesome content</p>
+        <Link href="/swedeMenu">
+          <p className="inline-block bg-green-800 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors duration-200 shadow-md hover:shadow-lg">
+            Buy Now
+          </p>
+        </Link>
       </div>
     </div>
   );

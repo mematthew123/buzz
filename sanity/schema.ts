@@ -10,7 +10,8 @@ import vendor from './schemas/vendor'
 import hero from './schemas/hero'
 import menu from './schemas/menu'
 import featured from './schemas/featured'
+import banner from './schemas/banner'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [post, author, category, blockContent, product,collections,vendor,hero,menu,featured],
+  types: [post, category, blockContent,hero,menu,featured,banner],
 }
