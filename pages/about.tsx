@@ -2,6 +2,16 @@ import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { client } from "@/sanity/lib/client";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
+import Layout from "@/components/Layout";
+
+import { Fraunces } from "next/font/google";
+
+const inter = Fraunces({
+  subsets: ["latin"],
+  style: "normal",
+  variable: "--font-fraunces",
+  weight: "900",
+});
 
 export const getStaticProps: GetStaticProps = async () => {
   const heroData = await client.fetch(`
@@ -13,7 +23,6 @@ export const getStaticProps: GetStaticProps = async () => {
     textPosition
   }
 `);
-
 
   return {
     props: {
@@ -29,8 +38,16 @@ const aboutPage: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
   return (
     <div>
       <Navbar />
-      <Hero heroData={heroData} />
-      {/* Rest of your page components go here */}
+      <Layout>
+        <h2
+          className={
+            inter.className +
+            " flex justify-center text-7xl font-extrabold text-gray-800"
+          }
+        >
+          Coming soon
+        </h2>
+      </Layout>
     </div>
   );
 };
