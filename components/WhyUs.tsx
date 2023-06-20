@@ -40,7 +40,7 @@ const barlow = Barlow({
 
 const WhyUs = () => {
   return (
-    <div className="container mx-auto space-y-20 py-10 bg-[#FAEDCD] px-4 rounded-lg shadow-lg border border-gray-200">
+    <div className="container mt-20 lg:mt-40 mx-auto space-y-20 py-10 bg-[#FAEDCD] px-4 rounded-lg shadow-lg border border-gray-200">
       <div className="  text-center space-y-10">
         <h2
           className={
