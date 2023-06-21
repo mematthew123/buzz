@@ -9,9 +9,11 @@ export async function getStaticProps() {
   return {
     props: {
       posts
-    }
+    },
+    revalidate: 60,  // Re-generate the post every minute
   }
 }
+
 
 type Props = {
     posts: {
