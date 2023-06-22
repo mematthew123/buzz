@@ -32,7 +32,7 @@ const Blog = ({ posts }: Props) => {
     
     <Navbar />
     <Layout>
-    <div className="p-4  text-gray-700">
+    <div className=" mt-20 lg:mt-52 p-4  text-gray-700">
       <h1 className="text-4xl font-semibold mb-6 text-center">Blog</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {posts.map(post => (

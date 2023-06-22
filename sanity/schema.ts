@@ -12,7 +12,8 @@ import menu from './schemas/menu'
 import featured from './schemas/featured'
 import banner from './schemas/banner'
 import content from './schemas/content'
+import aboutUsPage from './schemas/aboutUsPage'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [post, category, blockContent,menu,featured,banner,content],
+  types: [post, category, blockContent,menu,featured,banner,content,aboutUsPage],
 }
