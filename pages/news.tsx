@@ -1,77 +1,56 @@
 import React from 'react';
 import Link from 'next/link';
-import { client} from '@/sanity/lib/client';
-import { urlForImage } from '@/sanity/lib/image';
-import Image from 'next/image';
-import Navbar from '@/components/Navbar';
+import { getAllPosts} from '@/sanity/queries/getAllPosts';
 import Layout from '@/components/Layout';
+import Navbar from '@/components/Navbar';
+
+export async function getStaticProps() {
+  const posts = await getAllPosts();
+  return {
+    props: {
+      posts
+    },
+    revalidate: 60,  // Re-generate the post every minute
+  }
+}
+
 
 type Props = {
     posts: {
-        _id: string;
-        title: string;
-        slug: {
-            current: string;
-        };
-        mainImage: {
-            asset: {
-                _id: string;
-            };
-            alt: string;
-        };
-    }[];
-};
+        title: string
+        description: string
+        imageUrl: string
+        alt: string
+        slug: string
+        _id: string
+    }[]
+}
 
-
-const PostsPage = ({ posts }: Props) => {
+const Blog = ({ posts }: Props) => {
   return (
     <>
+    
     <Navbar />
     <Layout>
-    <div className='container mt-40 grid grid-cols-1 md:grid-cols-3 gap-4'>
-      {posts.map(post => (
-        <Link href={`/posts/${post.slug.current}`} key={post._id}>
-          <p>
-            <h2>{post.title}</h2>
-            <Image
-              src={urlForImage(post.mainImage.asset)
-                .width(500)
-                .height(500)
-                .url()}
-              alt={post.mainImage.alt}
-              width={500}
-              height={500}
-              />
-          </p>
-        </Link>
-      ))}
+    <div className="p-4  text-gray-700">
+      <h1 className="text-4xl font-semibold mb-6 text-center">Blog</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {posts.map(post => (
+          <Link href={`/posts/${post.slug}`} key={post._id}>        
+              <div className="rounded-lg shadow-lg overflow-hidden transition-transform duration-500 ease-in-out transform hover:scale-105">
+              <img src={post.imageUrl} alt={post.alt} className="w-full h-64 object-cover"/>
+              <div className="p-6 bg-white">
+                <h2 className="text-2xl font-semibold mb-2">{post.title}</h2>
+                <p className="text-gray-600">{post.description}</p>
+              </div>
+            </div>
+          </Link>
+        ))}
+      </div>
     </div>
     </Layout>
     </>
   )
 }
 
-export const getStaticProps = async () => {
-  const posts = await client.fetch(`
-    *[_type == "post"] {
-      _id,
-      title,
-      slug,
-      mainImage {
-        asset-> {
-          _id,
-          url
-        },
-        alt
-      }
-    }
-  `);
-
-  return {
-    props: {
-      posts,
-    },
-  };
-}
-
-export default PostsPage;
+export default Blog;
