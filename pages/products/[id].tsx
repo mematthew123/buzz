@@ -72,9 +72,9 @@ const ProductPage: React.FC<{ product: Product }> = ({ product }) => {
   return (
     <>
       <Navbar />
-      <div className="container mx-auto px-6 py-8">
-        <div className="flex flex-wrap -mx-4">
-          <div className="w-full md:w-1/2 px-4 mb-4 md:mb-0">
+      <div className='container mx-auto mt-10 lg:mt-20  px-6 py-8'>
+        <div className='flex flex-wrap -mx-4'>
+          <div className='w-full md:w-1/2 px-4 mb-4 md:mb-0'>
             <Swiper
               spaceBetween={50}
               slidesPerView={1}
@@ -83,48 +83,48 @@ const ProductPage: React.FC<{ product: Product }> = ({ product }) => {
               scrollbar={{ draggable: true }}
               onSwiper={(swiper) => console.log(swiper)}
               onSlideChange={() => console.log("slide change")}
-              className="shadow-lg rounded-lg overflow-hidden h-96"
+              className='shadow-lg rounded-lg overflow-hidden h-96'
             >
               {product.imageUrls.map((url, index) => (
                 <SwiperSlide key={index}>
                   <img
                     src={url}
                     alt={product.title}
-                    className="h-full w-full object-cover"
+                    className='h-full w-full object-cover'
                   />
                 </SwiperSlide>
               ))}
             </Swiper>
           </div>
-          <div className="w-full md:w-1/2 px-4">
-            <h1 className="text-4xl font-bold mb-4">{product.title}</h1>
-            <p className="text-gray-600 mb-4">{product.description}</p>
-            <p className="text-gray-600">
+          <div className='w-full md:w-1/2 px-4'>
+            <h1 className='text-4xl font-bold mb-4'>{product.title}</h1>
+            <p className='text-gray-600 mb-4'>{product.description}</p>
+            <p className='text-gray-600'>
               <strong>Type:</strong> {product.type}
             </p>
-            <p className="text-gray-600">
+            <p className='text-gray-600'>
               <strong>THC:</strong> {product.thc}%
             </p>
-            <p className="text-gray-600">
+            <p className='text-gray-600'>
               <strong>CBD:</strong> {product.cbd}%
             </p>
-            <p className="text-gray-600">
+            <p className='text-gray-600'>
               <strong>Price:</strong> ${product.price}
             </p>
-            <p className="text-gray-600">
+            <p className='text-gray-600'>
               <strong>Size:</strong> {product.size}
             </p>
-            <div className="mt-4">
+            <div className='mt-4'>
               <input
-                type="number"
-                min="1"
+                type='number'
+                min='1'
                 value={quantity}
                 onChange={(e) => setQuantity(parseInt(e.target.value))}
-                className="mr-4 border rounded-md px-2"
+                className='mr-4 border rounded-md px-2'
               />
               <button
                 onClick={handleAddToCart}
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
               >
                 Add to Cart
               </button>

@@ -1,40 +1,49 @@
-import React from "react";
-import { getFeatured } from "@/sanity/queries/getFeatured";
-import { GetStaticProps, InferGetStaticPropsType } from "next";
+import FeatureSection from "../components/FeatureSection";
 import { client } from "@/sanity/lib/client";
-import Featured from "@/components/Featured";
-import Reviews from "@/components/Reviews";
-import Testimonials from "@/components/Testimonials";
 
-export const getStaticProps: GetStaticProps = async () => {
-  const featuredData = await client.fetch(`
-  *[_type == "featured"][0]{
-    title,
-    description,
-    "featuredImage": featuredImage.asset->url,
-    "alt": featuredImage.alt,
-    textPosition
-  }
-`);
+export async function getStaticProps() {
+  const featuredProducts = await client.fetch(
+    `
+*[_type == "product" && featured == true]{
+  _id,
+  title,
+  description,
+  type,
+  productType,
+  thc,
+  cbd,
+  price,
+  size,
+  "imageUrl": images[0].asset->url,
+}
+`
+  );
 
   return {
     props: {
-      featuredData,
+      featuredProducts,
     },
-    revalidate: 60, // ISR, re-generate the site every 60 seconds if there's a request
   };
+}
+
+type Props = {
+  featuredProducts: any;
 };
 
-const testPage: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
-  featuredData,
-}) => {
+export default function Test({ featuredProducts }: Props) {
   return (
-    <div>
-      <Featured featuredData={featuredData} />
-      <Testimonials />
-      <Reviews />
+    <div className='grid grid-cols-3 gap-4'>
+      {featuredProducts.map((product: any) => (
+        <div key={product._id}>
+          <FeatureSection
+            category={product.type}
+            title={product.title}
+            description={product.description}
+            imageUrl={product.imageUrl}
+          />
+          <hr />
+        </div>
+      ))}
     </div>
   );
-};
-
-export default testPage;
+}

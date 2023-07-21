@@ -16,5 +16,5 @@ import aboutUsPage from './schemas/aboutUsPage'
 import contactUsPage from './schemas/contactUsPage'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [post, category, blockContent,menu,featured,banner,content,aboutUsPage,contactUsPage],
+  types: [post, category,product, collections, vendor, blockContent,menu,featured,banner,content,aboutUsPage,contactUsPage],
 }
