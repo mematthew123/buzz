@@ -31,7 +31,7 @@ const Featured: React.FC<{ featuredData: FeaturedData }> = ({
 
   return (
     <>
-      <div className='bg-[#E9EDC9] mt-20 lg:mt-40 flex flex-col lg:flex-row p-4 lg:p-10 space-y-4 lg:space-y-0 lg:space-x-4 lg:max-w-7xl mx-auto my-20 rounded-lg shadow-lg border border-gray-200'>
+      <div className='bg-[#abd1c6] mt-20 lg:mt-40 flex flex-col lg:flex-row p-4 lg:p-10 space-y-4 lg:space-y-0 lg:space-x-4 lg:max-w-7xl mx-auto my-20 rounded-lg shadow-lg border border-gray-200'>
         <div className='lg:w-1/2 aspect-auto shadow-inner'>
           <Image
             src={featuredData.featuredImage}
@@ -48,7 +48,7 @@ const Featured: React.FC<{ featuredData: FeaturedData }> = ({
           <h2 className='text-3xl font-extrabold text-gray-800'>
             {featuredData.title}
           </h2>
-          <p className='text-lg text-gray-600'>{featuredData.description}</p>
+          <p className='text-lg text-gray-500'>{featuredData.description}</p>
           <Link href='/menu'>
             <p className='inline-block bg-green-800 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors duration-200 shadow-md hover:shadow-lg'>
               Buy Now

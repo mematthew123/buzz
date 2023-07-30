@@ -7,6 +7,7 @@ import {
 } from "react-icons/ai";
 import { useContext } from "react";
 import CartContext from "@/context/cartContext";
+import Image from "next/image";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -33,7 +34,7 @@ const Navbar = () => {
         setTextColor("#000000");
       } else {
         setColor("transparent");
-        setTextColor("#black");
+        setTextColor("#abd1c6");
       }
     };
     window.addEventListener("scroll", changeColor);
@@ -46,11 +47,9 @@ const Navbar = () => {
     >
       <div className='max-w-[1240px] m-auto flex justify-between items-center p-4 text-white'>
         <Link href='/'>
-          <h1 style={{ color: `${textColor}` }} className='font-bold text-4xl'>
-            <span className='text-[#F7FE72]'>Buzz</span>co.
-          </h1>
+          <Image src='/Untitled.png' width={50} height={50} alt='logo' />
         </Link>
-        <ul style={{ color: `${textColor}` }} className='hidden sm:flex'>
+        <ul style={{ color: "#abd1c6" }} className='hidden sm:flex'>
           <li className='p-4'>
             <Link href='/menu'>Shop</Link>
           </li>
@@ -69,10 +68,7 @@ const Navbar = () => {
           <li className='p-4'>
             <Link href='/cart'>
               <p>
-                <AiOutlineShoppingCart
-                  size={20}
-                  style={{ color: `${textColor}` }}
-                />
+                <AiOutlineShoppingCart size={20} style={{ color: "#abd1c6" }} />
                 {getTotalItemsInCart() > 0 && (
                   <span>{getTotalItemsInCart()}</span>
                 )}
@@ -84,9 +80,9 @@ const Navbar = () => {
         {/* Mobile Button */}
         <div onClick={handleNav} className='block sm:hidden z-10'>
           {nav ? (
-            <AiOutlineClose size={20} style={{ color: `${textColor}` }} />
+            <AiOutlineClose size={25} style={{ color: "#abd1c6" }} />
           ) : (
-            <AiOutlineMenu size={20} style={{ color: `${textColor}` }} />
+            <AiOutlineMenu size={25} style={{ color: `${textColor}` }} />
           )}
         </div>
         {/* Mobile Menu */}

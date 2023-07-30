@@ -91,12 +91,10 @@ const Home: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
   return (
     <>
       <Head>
-        <title>
-          Kootanei Organics | Organic small batch cannabis in western Montana
-        </title>
+        <title>Buzz Co | Cannabis</title>
         <meta
           name='description'
-          content='Discover Kootanei Organics and our range of organic small batch cannabis products grown in the heart of western Montana. Shop for vapes, pre-rolls, edibles and more.'
+          content='Buzz Co Cannabis is a cannabis dispensary located in the heart of Missoula. We offer a wide variety of cannabis products, including flower, edibles, vapes, and more.'
         />
       </Head>
       <div>
@@ -132,7 +130,6 @@ const Home: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
           <Section>
             <Featured featuredData={featuredData} />
           </Section>
-
           <SectionRight>
             <MenuBoard specials={[]} />
           </SectionRight>

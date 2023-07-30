@@ -40,8 +40,8 @@ const barlow = Barlow({
 
 const WhyUs = () => {
   return (
-    <div className="container mt-20 lg:mt-40 mx-auto space-y-20 py-10 bg-[#FAEDCD] px-4 rounded-lg shadow-lg border border-gray-200">
-      <div className="  text-center space-y-10">
+    <div className='container mt-20 lg:mt-40 mx-auto space-y-20  py-10 bg-[#E9EDC9] px-4 rounded-lg shadow-lg border border-gray-200'>
+      <div className='  text-center space-y-10'>
         <h2
           className={
             inter.className + " text-4xl lg:text-5xl font-bold text-gray-800"
@@ -51,7 +51,7 @@ const WhyUs = () => {
         </h2>
         <p
           className={
-            barlow.className + " text-lg text-gray-600 leading-relaxed"
+            barlow.className + " text-lg text-gray-500 leading-relaxed"
           }
         >
           We have over 15 years of experience in the cannabis industry and we
@@ -61,20 +61,22 @@ const WhyUs = () => {
         </p>
       </div>
       {/* features container */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
         {features.map(({ title, description }, index) => (
           <div
             key={index}
-            className="bg-gray-300 flex flex-col items-center justify-center p-6 rounded-lg shadow-lg space-y-4"
+            className='bg-[#abd1c6] flex flex-col items-center justify-center p-6 rounded-lg shadow-lg space-y-4'
           >
             <SectionRight>
-              <FaCannabis className="text-6xl text-white" />
+              <FaCannabis className='text-6xl text-slate-200' />
             </SectionRight>
             <SectionUp>
-              <h3 className="text-2xl font-semibold text-white">{title}</h3>
+              <h3 className='text-2xl font-semibold text-slate-200'>{title}</h3>
             </SectionUp>
             <SectionUp>
-              <p className="text-center lg:text-lg text-white">{description}</p>
+              <p className='text-center lg:text-lg text-slate-200'>
+                {description}
+              </p>
             </SectionUp>
           </div>
         ))}
