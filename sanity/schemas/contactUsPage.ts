@@ -1,8 +1,8 @@
 import {defineField, defineType} from 'sanity'
 
 export default defineType({
-  name: 'post',
-  title: 'Blog Post',
+  name: 'contactUs',
+  title: 'Contact Us Page',
   type: 'document',
   fields: [
     defineField({
@@ -11,18 +11,8 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      options: {
-        source: 'title',
-        maxLength: 96,
-      },
-    }),
-   
-    defineField({
-      name: 'mainImage',
-      title: 'Main image',
+      name: 'topImage',
+      title: 'Top Image',
       type: 'image',
       options: {
         hotspot: true,
@@ -36,22 +26,31 @@ export default defineType({
       ]
     }),
     defineField({
-      name: 'categories',
-      title: 'Categories',
-      type: 'array',
-      of: [{type: 'reference', to: {type: 'category'}}],
-    }),
+        name: 'body',
+        title: 'Body',
+        type: 'blockContent',
+      }),
     defineField({
-      name: 'body',
-      title: 'Body',
-      type: 'blockContent',
+      name: 'bottomImage',
+      title: 'Bottom Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative Text',
+        }
+      ]
     }),
   ],
 
   preview: {
     select: {
       title: 'title',
-      media: 'mainImage',
+      media: 'topImage',
     },
   },
 })

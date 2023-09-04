@@ -4,7 +4,6 @@ import { AppProps } from "next/app";
 import { useState } from "react";
 import blurStyles from "../components/blur.module.css";
 import "@/styles/globals.css";
-// import Layout from "@/components/Layout";
 import { CartProvider } from "@/context/cartContext";
 
 export default function App({ Component, pageProps }: AppProps) {

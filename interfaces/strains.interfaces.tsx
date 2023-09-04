@@ -12,10 +12,7 @@ export interface Strain {
   cbd: number;
   image: string;
   description: string;
-  price: number;
-  stock: number;
-  onSale: boolean;
-  quantity: number;
+
 }
 
 // below is the interface for the strain card

@@ -15,16 +15,17 @@ h2 {
   text-align: center;
 }
 
-/* p {
+p {
   font-family: "Barlow", sans-serif;
   font-weight: 400;
   overflow-wrap: break-word;
   line-height: 1.5;
-  color: black;
-} */
+}
 
 
-
+#portableText ul li {
+  @apply list-disc list-inside;
+}
 /* .nav-menu {
   font-family: "Barlow", sans-serif;
   font-weight: 600;

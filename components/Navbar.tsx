@@ -7,6 +7,7 @@ import {
 } from "react-icons/ai";
 import { useContext } from "react";
 import CartContext from "@/context/cartContext";
+import Image from "next/image";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -33,7 +34,7 @@ const Navbar = () => {
         setTextColor("#000000");
       } else {
         setColor("transparent");
-        setTextColor("#black");
+        setTextColor("#abd1c6");
       }
     };
     window.addEventListener("scroll", changeColor);
@@ -42,51 +43,46 @@ const Navbar = () => {
   return (
     <div
       style={{ backgroundColor: `${color}` }}
-      className="fixed left-0 top-0 w-full z-10 ease-in duration-300"
+      className='fixed left-0 top-0 w-full z-10 ease-in duration-300'
     >
-      <div className="max-w-[1240px] m-auto flex justify-between items-center p-4 text-white">
-        <Link href="/">
-          <h1 style={{ color: `${textColor}` }} className="font-bold text-4xl">
-            <span className="text-green-500">KO</span>Logo
-          </h1>
+      <div className='max-w-[1240px] m-auto flex justify-between items-center p-4 text-white'>
+        <Link href='/'>
+          <Image src='/Untitled.png' width={50} height={50} alt='logo' />
         </Link>
-        <ul style={{ color: `${textColor}` }} className="hidden sm:flex">
-          <li className="p-4">
-            <Link href="/">Home</Link>
+        <ul style={{ color: "#abd1c6" }} className='hidden sm:flex'>
+          <li className='p-4'>
+            <Link href='/menu'>Shop</Link>
           </li>
-          <li className="p-4">
-            <Link href="/swedeMenu">Shop</Link>
+          <li className='p-4'>
+            <Link href='/strains'>Strains</Link>
           </li>
-          <li className="p-4">
-            <Link href="/about">About</Link>
+          <li className='p-4'>
+            <Link href='/about'>About</Link>
           </li>
-          <li className="p-4">
-            <Link href="/contact">Contact</Link>
+          <li className='p-4'>
+            <Link href='/contact'>Contact</Link>
           </li>
-          <li className="p-4">
-            <Link href="/news">News</Link>
+          <li className='p-4'>
+            <Link href='/news'>News</Link>
           </li>
-          {/* <li className="p-4">
-            <Link href="/cart">
+          <li className='p-4'>
+            <Link href='/cart'>
               <p>
-                <AiOutlineShoppingCart
-                  size={20}
-                  style={{ color: `${textColor}` }}
-                />
+                <AiOutlineShoppingCart size={20} style={{ color: "#abd1c6" }} className="inline-block" />
                 {getTotalItemsInCart() > 0 && (
-                  <span>{getTotalItemsInCart()}</span>
+                  <span>{''}{getTotalItemsInCart()}</span>
                 )}
               </p>
             </Link>
-          </li> */}
+          </li>
         </ul>
 
         {/* Mobile Button */}
-        <div onClick={handleNav} className="block sm:hidden z-10">
+        <div onClick={handleNav} className='block sm:hidden z-10'>
           {nav ? (
-            <AiOutlineClose size={20} style={{ color: `${textColor}` }} />
+            <AiOutlineClose size={25} style={{ color: "#abd1c6" }} />
           ) : (
-            <AiOutlineMenu size={20} style={{ color: `${textColor}` }} />
+            <AiOutlineMenu size={25} style={{ color: `${textColor}` }} />
           )}
         </div>
         {/* Mobile Menu */}
@@ -100,33 +96,45 @@ const Navbar = () => {
           <ul>
             <li
               onClick={handleNav}
-              className="p-4 text-4xl hover:text-gray-500"
+              className='p-4 text-4xl hover:text-gray-500'
             >
-              <Link href="/">Home</Link>
+              <Link href='/menu'>Shop</Link>
             </li>
             <li
               onClick={handleNav}
-              className="p-4 text-4xl hover:text-gray-500"
+              className='p-4 text-4xl hover:text-gray-500'
             >
-              <Link href="/swedeMenu">Shop</Link>
+              <Link href='/strains'>Strains</Link>
             </li>
             <li
               onClick={handleNav}
-              className="p-4 text-4xl hover:text-gray-500"
+              className='p-4 text-4xl hover:text-gray-500'
             >
-              <Link href="/about">About</Link>
+              <Link href='/about'>About</Link>
             </li>
             <li
               onClick={handleNav}
-              className="p-4 text-4xl hover:text-gray-500"
+              className='p-4 text-4xl hover:text-gray-500'
             >
-              <Link href="/contact">Contact</Link>
+              <Link href='/contact'>Contact</Link>
             </li>
             <li
               onClick={handleNav}
-              className="p-4 text-4xl hover:text-gray-500"
+              className='p-4 text-4xl hover:text-gray-500'
             >
-              <Link href="/news">News</Link>
+              <Link href='/news'>News</Link>
+            </li>
+            <li
+              onClick={handleNav}
+              className='p-4 text-4xl hover:text-gray-500'
+            >
+             <Link href='/cart'>
+              <p className="inline-block">
+                {getTotalItemsInCart() > 0 && (
+                  <span>Cart {''}{getTotalItemsInCart()}</span>
+                )}
+              </p>
+            </Link>
             </li>
           </ul>
         </div>
