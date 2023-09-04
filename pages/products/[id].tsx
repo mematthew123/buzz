@@ -75,7 +75,7 @@ const ProductPage: React.FC<{ product: Product }> = ({ product }) => {
     <>
       <Navbar />
       <Layout>
-        <div className='container bg-neutral-100 shadow-lg rounded-lg my-20 mx-auto mt-32   py-8'>
+        <div className='container bg-neutral-100 px-10 shadow-lg rounded-lg my-20 mx-auto mt-32   py-8'>
           <div className='flex flex-wrap -mx-4'>
             <div className='w-full md:w-1/2 px-4 mb-4 md:mb-0'>
               <Swiper
@@ -85,7 +85,7 @@ const ProductPage: React.FC<{ product: Product }> = ({ product }) => {
                 pagination={{ clickable: true }}
                 scrollbar={{ draggable: true }}
                 onSwiper={(swiper) => console.log(swiper)}
-                onSlideChange={() => console.log("slide change")}
+                onSlideChange={() => console.log('slide change')}
                 className='shadow-lg rounded-lg overflow-hidden h-96'
               >
                 {product.imageUrls.map((url, index) => (
@@ -93,7 +93,7 @@ const ProductPage: React.FC<{ product: Product }> = ({ product }) => {
                     <img
                       src={url}
                       alt={product.title}
-                      className='h-full w-full object-cover'
+                      className='h-full w-full object-cover rounded-lg'
                     />
                   </SwiperSlide>
                 ))}
@@ -127,7 +127,7 @@ const ProductPage: React.FC<{ product: Product }> = ({ product }) => {
                 />
                 <button
                   onClick={handleAddToCart}
-                  className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+                  className='bg-[#004643] hover:bg-cyprus-900 text-white font-bold py-2 px-4 rounded'
                 >
                   Add to Cart
                 </button>

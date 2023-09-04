@@ -7,7 +7,7 @@ interface FeatureSectionProps {
   category: string;
   title: string;
   description: string;
-  imageUrl: string; // Add imageUrl prop here
+  imageUrl: string; 
   initial?: Object;
   animate?: Object;
   transition?: Object;
@@ -33,14 +33,14 @@ const FeatureSection: React.FC<FeatureSectionProps> = ({
         <Link href='/menu'>
           <div className='flex flex-wrap -m-4'>
             <div className='p-4 lg:w-[400px] md:w-1/2'>
-              <div className='h-full  bg-[#E9EDC9] border border-gray-200 bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative shadow-2xl'>
+              <div className='h-full  bg-[#E9EDC9] border border-gray-200  px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative shadow-2xl'>
                 <Image
                   src={imageUrl}
                   alt={title}
                   width={600}
                   height={600}
-                  className=' aspect-auto h-56 w-56 object-cover object-center rounded-lg inline-block  bg-gray-100'
-                />{" "}
+                  className=' aspect-auto h-56 w-56 object-cover object-center rounded-lg inline-block  '
+                />{' '}
                 {/* Image component from Next.js */}
                 <h2 className='tracking-widest my-4 text-base title-font font-medium text-gray-500 mb-3'>
                   {category}
@@ -52,7 +52,7 @@ const FeatureSection: React.FC<FeatureSectionProps> = ({
                   {description}
                 </p>
                 <Link href='/menu'>
-                  <p className=' text-[#F7FE72] text-lg inline-flex items-center mt-4 transition-colors duration-200 transform hover:scale-105'>
+                  <p className=' text-gray-900 text-lg inline-flex items-center mt-4 transition-colors duration-200 transform hover:scale-105'>
                     Learn More
                     <svg
                       className='w-4 h-4 ml-2'

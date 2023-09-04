@@ -1,9 +1,25 @@
-import React from "react";
-import { getAboutUs } from "@/sanity/queries/getAboutUs";
-import Layout from "@/components/Layout";
-import Navbar from "@/components/Navbar";
-import Image from "next/image";
-import { PortableText } from "@portabletext/react";
+import React from 'react';
+import { getAboutUs } from '@/sanity/queries/getAboutUs';
+import Layout from '@/components/Layout';
+import Navbar from '@/components/Navbar';
+import Image from 'next/image';
+import { PortableText } from '@portabletext/react';
+import { Fraunces, Poppins } from 'next/font/google';
+import Head from 'next/head';
+
+const bodyFont = Poppins({
+  subsets: ['latin'],
+  style: 'normal',
+  variable: '--font-display',
+  weight: '200',
+});
+
+const titleFont = Fraunces({
+  subsets: ['latin'],
+  style: 'normal',
+  variable: '--font-fraunces',
+  weight: '900',
+});
 
 export async function getStaticProps() {
   const aboutUsContent = await getAboutUs();
@@ -11,7 +27,7 @@ export async function getStaticProps() {
     props: {
       aboutUsContent,
     },
-    revalidate: 60, // Re-generate the post every minute
+    revalidate: 3,
   };
 }
 
@@ -28,55 +44,56 @@ type Props = {
 
 const AboutUs = ({ aboutUsContent }: Props) => {
   return (
-    <>
+    <div>
+      <Head>
+        <title>About Us | Our Story</title>
+        <meta
+          name='description'
+          content='Learn more about our story and our values.'
+        />
+      </Head>
       <Navbar />
       <Layout>
-        <div className="mt-20 lg:mt-52 p-4 text-center text-gray-700">
+        <div className=' bg-[#abd1c6] flex flex-col lg:flex-row  items-center p-4 lg:p-10 space-y-4 lg:space-y-0 lg:space-x-4 lg:w-[1400px] max-w-full mx-auto mt-32 rounded-md shadow-lg border border-gray-200'>
           {aboutUsContent.map((content) => {
-            // Hypothetical code to split the body content into two halves
-            const firstHalfBody = content.body.slice(
-              0,
-              Math.ceil(content.body.length / 2)
-            );
-            const secondHalfBody = content.body.slice(
-              Math.ceil(content.body.length / 2)
-            );
-
             return (
-              <div key={content.title}>
-                <h1 className="text-5xl font-bold mb-6 text-black">
+              <div
+                key={content.title}
+                className='p-6 lg:p-12 rounded-lg text-cyprus-950  max-w-7xl mx-auto'
+              >
+                <h2
+                  className={
+                    'text-4xl text-center lg:text-7xl font-semi-bold lg:mb-6 mb-4'
+                  }
+                >
                   {content.title}
-                </h1>
-                <div className="mx-auto shadow-lg rounded-lg object-cover overflow-hidden mb-8">
+                </h2>
+                <div className='relative my-10 flex justify-center  mx-auto mb-10 overflow-hidden rounded-lg lg:h-[90vh]'>
                   <Image
-                    src={content.topImageUrl || "/burning.jpeg"}
+                    src={content.topImageUrl || '/burning.jpeg'}
                     alt={content.topImageAlt}
-                    width={800}
-                    height={800}
-                    className="w-full h-full object-cover align-middle"
-                  />
-                </div>
-                <div className="prose prose-lg mx-auto text-left">
-                  <PortableText value={firstHalfBody} />
-                </div>
-                <div className="mx-auto shadow-lg rounded-lg overflow-hidden mt-8 mb-8">
-                  <Image
-                    src={content.bottomImageUrl}
-                    alt={content.bottomImageAlt}
-                    width={600}
                     height={400}
-                    className="w-full h-full object-cover align-middle"
+                    width={400}
+                    className=' w-full  object-cover lg:rounded-lg   z-0 rounded-lg shadow-md'
                   />
                 </div>
-                <div className="prose prose-lg mx-auto text-left">
-                  <PortableText value={secondHalfBody} />
+
+                <div
+                  className={
+                    bodyFont.className +
+                    ' text-gray-600 text-lg  max-w-prose leading-relaxed mx-auto mb-8 '
+                  }
+                >
+                  {' '}
+                  <PortableText value={content.body} />
+                  <p className='text-lg text-gray-600 mx-auto mb-8'></p>
                 </div>
               </div>
             );
           })}
         </div>
       </Layout>
-    </>
+    </div>
   );
 };
 

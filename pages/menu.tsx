@@ -58,7 +58,7 @@ const Menu: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
               <select
                 value={selectedFilter}
                 onChange={handleFilterChange}
-                className='w-full appearance-none border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600'
+                className='w-full appearance-none border border-slate-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600'
               >
                 <option value='All'>All</option>
                 <option value='Sativa'>Sativa</option>
@@ -70,7 +70,7 @@ const Menu: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
               <select
                 value={selectedProductType}
                 onChange={handleProductTypeFilterChange}
-                className='w-full appearance-none border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600'
+                className='w-full appearance-none border border-slate-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600'
               >
                 <option value='All'>All</option>
                 <option value='Vape'>Vape</option>
@@ -84,20 +84,20 @@ const Menu: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
             {products
               .filter(
                 (product: { type: string; productType: string }) =>
-                  (selectedFilter === "All"
+                  (selectedFilter === 'All'
                     ? true
                     : product.type === selectedFilter) &&
-                  (selectedProductType === "All"
+                  (selectedProductType === 'All'
                     ? true
                     : product.productType === selectedProductType)
               )
               .map((product: Product) => (
                 <div
                   key={product._id}
-                  className='border bg-neutral-300 border-gray-300 p-4 rounded-lg hover:shadow-lg transition duration-300 ease-in-out'
+                  className='border bg-neutral-300 border-slate-300 p-4 rounded-lg hover:shadow-lg transition duration-300 ease-in-out'
                 >
                   <Image
-                    src={product.imageUrl || "/images/placeholder.png"}
+                    src={product.imageUrl || '/images/placeholder.png'}
                     alt={product.title}
                     width={500}
                     height={500}
@@ -106,33 +106,33 @@ const Menu: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
                   <h2 className='text-xl font-semibold mb-2 truncate'>
                     {product.title}
                   </h2>
-                  <p className='text-gray-500 mb-4 line-clamp-3'>
+                  <p className='text-slate-500 mb-4 line-clamp-3'>
                     {product.description}
                   </p>
                   <div className='grid grid-cols-2 gap-2 mb-4'>
-                    <p className='text-gray-500'>
+                    <p className='text-slate-500'>
                       <strong>Type:</strong> {product.type}
                     </p>
-                    <p className='text-gray-500'>
+                    <p className='text-slate-500'>
                       <strong>Product Type:</strong> {product.productType}
                     </p>
-                    <p className='text-gray-500'>
+                    <p className='text-slate-500'>
                       <strong>THC:</strong> {product.thc}%
                     </p>
-                    <p className='text-gray-500'>
+                    <p className='text-slate-500'>
                       <strong>CBD:</strong> {product.cbd}%
                     </p>
-                    <p className='text-gray-500'>
+                    <p className='text-slate-500'>
                       <strong>Price:</strong> ${product.price}
                     </p>
-                    <p className='text-gray-500'>
+                    <p className='text-slate-500'>
                       <strong>Size:</strong> {product.size}
                     </p>
                   </div>
                   <Link href={`/products/${product._id}`}>
-                    <button className='bg-blue-600 text-white rounded-md p-2 hover:bg-blue-800 transition duration-300 w-full'>
+                    <p className='block w-full text-center px-10 py-3 text-base font-medium text-slate-200 bg-cyprus-700 rounded-lg hover:bg-[#F7FE72] hover:text-cyprus-950 transition-colors duration-200 shadow-md hover:shadow-lg'>
                       View Details
-                    </button>
+                    </p>
                   </Link>
                 </div>
               ))}

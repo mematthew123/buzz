@@ -47,7 +47,7 @@ const FeatureSectionContainer: React.FC<Props> = ({
       <h1
         className={
           inter.className +
-          " hero-heading text-7xl text-center font-extrabold text-[#F7FE72]"
+          " text-7xl text-center font-extrabold text-[#F7FE72]"
         }
       >
         Featured Products

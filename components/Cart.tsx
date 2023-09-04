@@ -9,12 +9,12 @@ const Cart: React.FC = () => {
   });
 
   return (
-    <div className='container mx-auto px-6 py-8 bg-white rounded-xl shadow-md space-y-6'>
-      <h2 className='text-2xl font-semibold text-gray-800'>Your Cart</h2>
+    <div className='container mx-auto px-6 py-8 bg-gray-50 border border-[#004643] rounded-xl shadow-md space-y-6'>
+      <h2 className='text-2xl font-semibold text-[#004643]'>Your Cart</h2>
       {cart.map((item) => (
         <div
           key={item.product.title}
-          className='flex flex-wrap -mx-4 bg-gray-100 p-4 rounded-lg shadow-sm'
+          className='flex flex-wrap -mx-4 bg-gray-100  p-4 rounded-lg shadow-sm'
         >
           <div className='w-full md:w-1/2 px-4 mb-4 md:mb-0'>
             <img
@@ -24,7 +24,7 @@ const Cart: React.FC = () => {
             />
           </div>
           <div className='w-full md:w-1/2 px-4'>
-            <h3 className='text-xl font-medium text-gray-800'>
+            <h3 className='text-xl font-medium text-cyprus-950'>
               {item.product.title}
             </h3>
             <p className='text-gray-500 mt-2'>Quantity: {item.quantity}</p>

@@ -1,9 +1,9 @@
-import React, { useRef } from "react";
-import Link from "next/link";
-import { useInView } from "framer-motion";
-import Image from "next/image";
+import React, { useRef } from 'react';
+import Link from 'next/link';
+import { useInView } from 'framer-motion';
+import Image from 'next/image';
 
-type TextPosition = "left" | "center" | "right";
+type TextPosition = 'left' | 'center' | 'right';
 
 interface FeaturedData {
   title: string;
@@ -20,9 +20,9 @@ const Featured: React.FC<{ featuredData: FeaturedData }> = ({
   const isInView = useInView(ref, { once: true });
 
   const textPositionClasses: Record<TextPosition, string> = {
-    left: "lg:items-start lg:text-left",
-    center: "items-center text-center",
-    right: "lg:items-end lg:text-right",
+    left: 'lg:items-start lg:text-left',
+    center: 'items-center text-center',
+    right: 'lg:items-end lg:text-right',
   };
 
   const positionClass =
@@ -45,7 +45,7 @@ const Featured: React.FC<{ featuredData: FeaturedData }> = ({
         <div
           className={`flex-1 flex flex-col justify-center ${positionClass} space-y-4`}
         >
-          <h2 className='text-3xl font-extrabold text-gray-800'>
+          <h2 className='text-3xl font-extrabold text-cyprus-950'>
             {featuredData.title}
           </h2>
           <p className='text-lg text-gray-500'>{featuredData.description}</p>

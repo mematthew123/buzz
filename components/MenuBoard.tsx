@@ -46,7 +46,7 @@ const MenuBoard: React.FC<Props> = () => {
   return (
     <>
       <div className='bg-[#E9EDC9]  mt-20 lg:mt-40 flex flex-col lg:flex-row items-center p-4 lg:p-10 space-y-4 lg:space-y-0 lg:space-x-4 lg:w-[1100px] max-w-full mx-auto mb-20 rounded-md shadow-lg border border-gray-200'>
-        <div className='bg-gray-800 shadow-lg text-slate-200 mx-auto lg:w-[1100px] rounded-lg'>
+        <div className='bg-gray-800 shadow-lg text-gray-500 mx-auto lg:w-[1100px] rounded-lg'>
           <h1
             className={
               inter.className +

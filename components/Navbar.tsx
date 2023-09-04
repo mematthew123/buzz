@@ -68,9 +68,9 @@ const Navbar = () => {
           <li className='p-4'>
             <Link href='/cart'>
               <p>
-                <AiOutlineShoppingCart size={20} style={{ color: "#abd1c6" }} />
+                <AiOutlineShoppingCart size={20} style={{ color: "#abd1c6" }} className="inline-block" />
                 {getTotalItemsInCart() > 0 && (
-                  <span>{getTotalItemsInCart()}</span>
+                  <span>{''}{getTotalItemsInCart()}</span>
                 )}
               </p>
             </Link>
@@ -128,7 +128,13 @@ const Navbar = () => {
               onClick={handleNav}
               className='p-4 text-4xl hover:text-gray-500'
             >
-              <Link href='/cart'>Cart</Link>
+             <Link href='/cart'>
+              <p className="inline-block">
+                {getTotalItemsInCart() > 0 && (
+                  <span>Cart {''}{getTotalItemsInCart()}</span>
+                )}
+              </p>
+            </Link>
             </li>
           </ul>
         </div>

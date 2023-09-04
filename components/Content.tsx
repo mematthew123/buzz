@@ -6,6 +6,15 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { client } from "../sanity/lib/client";
 import { PortableText } from "@portabletext/react";
+import {  Barlow } from "next/font/google";
+
+
+const barlow = Barlow({
+  subsets: ["latin"],
+  style: "normal",
+  variable: "--font-display",
+  weight: "400",
+});
 
 interface ContentProps {
   title: string;
@@ -33,8 +42,7 @@ export default function Content() {
           <div>
             {/* <h2 className="text-lg font-semibold text-indigo-600">100% Organic</h2> */}
             <h3 className='mt-2 text-3xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl'>
-              {contentData.title}{" "}
-              {/* Replace hardcoded title with title from Sanity */}
+              {contentData.title}{' '}
             </h3>
           </div>
         </div>
@@ -86,7 +94,7 @@ export default function Content() {
                 </div>
                 <figcaption className='mt-3 flex text-sm text-gray-500'>
                   <CameraIcon
-                    className='h-5 w-5 flex-none text-slate-200'
+                    className='h-5 w-5 flex-none text-[#004643]'
                     aria-hidden='true'
                   />
                   <span className='ml-2'>Photograph by Marcus O’Leary</span>
@@ -97,7 +105,12 @@ export default function Content() {
           <div className='mt-8 lg:mt-0'>
             <SectionUp>
               <div className='mx-auto max-w-prose text-base lg:max-w-none'>
-                <p className='text-lg text-gray-500'>
+                <p
+                  className={
+                    barlow.className + ' text-lg text-gray-500 leading-relaxed'
+                  }
+                >
+                  {' '}
                   <PortableText value={contentData.description} />
                 </p>
               </div>

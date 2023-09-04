@@ -1,28 +1,28 @@
-import Link from "next/link";
-import WhyUs from "@/components/WhyUs";
-import { client } from "@/sanity/lib/client";
-import { GetStaticProps, InferGetStaticPropsType } from "next";
-import { getFeaturedProduct } from "@/sanity/queries/getProducts";
-import Navbar from "@/components/Navbar";
-import { Fraunces } from "next/font/google";
-import MenuBoard from "@/components/MenuBoard";
-import Testimonials from "@/components/Testimonials";
-import Footer from "@/components/Footer";
-import Content from "@/components/Content";
-import Featured from "@/components/Featured";
-import Head from "next/head";
-import Layout from "@/components/Layout";
-import Banner from "@/components/Banner";
-import Section from "@/animations/section";
-import SectionRight from "@/animations/sectionRight";
-import SectionUp from "@/animations/sectionUp";
-import FeatureSectionContainer from "@/components/FeatureSectionContainer";
+import Link from 'next/link';
+import WhyUs from '@/components/WhyUs';
+import { client } from '@/sanity/lib/client';
+import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { getFeaturedProduct } from '@/sanity/queries/getProducts';
+import Navbar from '@/components/Navbar';
+import { Fraunces } from 'next/font/google';
+import MenuBoard from '@/components/MenuBoard';
+import Testimonials from '@/components/Testimonials';
+import Footer from '@/components/Footer';
+import Content from '@/components/Content';
+import Featured from '@/components/Featured';
+import Head from 'next/head';
+import Layout from '@/components/Layout';
+import Banner from '@/components/Banner';
+import Section from '@/animations/section';
+import SectionRight from '@/animations/sectionRight';
+import SectionUp from '@/animations/sectionUp';
+import FeatureSectionContainer from '@/components/FeatureSectionContainer';
 
 const inter = Fraunces({
-  subsets: ["latin"],
-  style: "normal",
-  variable: "--font-fraunces",
-  weight: "900",
+  subsets: ['latin'],
+  style: 'normal',
+  variable: '--font-fraunces',
+  weight: '900',
 });
 
 function SwirlyDoodle({ className }: { className: string }) {
@@ -107,7 +107,7 @@ const Home: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
               <h1
                 className={
                   inter.className +
-                  " hero-heading text-7xl font-extrabold text-[#F7FE72]"
+                  ' hero-heading text-7xl font-extrabold text-[#F7FE72]'
                 }
               >
                 Buzz Cannabis Co.
@@ -118,15 +118,13 @@ const Home: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
                 See what all the buzz is about
               </p>
               <Link href='/menu'>
-                <p className='cta-button inline-block px-10 py-3 text-base font-medium text-slate-200 bg-green-800 rounded-lg hover:bg-green-700 transition-colors duration-200 shadow-md hover:shadow-lg'>
+                <p className='block w-full px-10 py-3 text-base font-medium text-slate-200 bg-cyprus-700 rounded-lg hover:bg-[#F7FE72] hover:text-cyprus-950 transition-colors duration-200 shadow-md hover:shadow-lg'>
                   Shop Now
                 </p>
               </Link>
             </div>
           </div>
-
           <FeatureSectionContainer featuredProducts={featuredProducts} />
-
           <Section>
             <Featured featuredData={featuredData} />
           </Section>
@@ -138,7 +136,6 @@ const Home: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
           </SectionUp>
           <WhyUs />
           <Testimonials />
-          <Footer />
         </Layout>
       </div>
     </>

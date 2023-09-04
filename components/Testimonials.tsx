@@ -57,10 +57,10 @@ export default function Testimonials() {
     <div className='bg-[#abd1c6] border rounded-lg border-gray-200 mt-20 lg:mt-40 flex flex-col lg:flex-row items-center p-4  space-y-4 lg:space-y-0 lg:space-x-4 lg:w-[1100px] max-w-full mx-auto mb-20  overflow-hidden shadow-lg '>
       <div className='mx-auto max-w-7xl px-6 lg:px-8 rounded-lg bg-[#E9EDC9] py-24 sm:py-32'>
         <div className='mx-auto max-w-xl text-center'>
-          <h2 className='text-lg font-semibold leading-8 tracking-tight text-indigo-600'>
+          <h2 className='text-lg font-semibold leading-8 tracking-tight text-[#004643]'>
             Testimonials
           </h2>
-          <p className='mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl'>
+          <p className='mt-2 text-3xl font-bold tracking-tight text-[#004643] sm:text-4xl'>
             We have worked with thousands of amazing people
           </p>
         </div>

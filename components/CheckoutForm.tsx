@@ -48,7 +48,7 @@ const CheckoutForm: React.FC = () => {
   };
 
   return (
-    <form className='w-full max-w-lg mx-auto bg-white rounded-xl shadow-md p-8 space-y-5'>
+    <form className='w-full max-w-lg mx-auto bg-gray-50 border border-[#004643] rounded-xl shadow-md p-8 space-y-5'>
       <h2 className='text-center text-2xl font-semibold text-gray-800'>
         Checkout
       </h2>
@@ -120,7 +120,7 @@ const CheckoutForm: React.FC = () => {
 
         <button
           onClick={handleOrderConfirmation}
-          className='w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+          className='w-full flex justify-center py-2 px-4 mt-5 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#004643] hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
           type='button'
         >
           Confirm Order
